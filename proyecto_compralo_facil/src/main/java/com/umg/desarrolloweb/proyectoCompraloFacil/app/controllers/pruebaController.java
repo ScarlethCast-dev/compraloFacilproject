@@ -11,6 +11,6 @@ public class pruebaController{
 
 	@GetMapping("/hola")
 	public String prueba(){
-		return "<h1> Probando el funcionamiento con el repositorio en GIT</h1>";
+		return "<h1> Probando el funcionamiento con el repositorio en GIT 22222</h1>";
 	}
 }
