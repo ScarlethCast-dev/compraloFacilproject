@@ -17,4 +17,9 @@ public class pruebaController{
 	public String pruebaPorDiego(){
 		return "index";
 	}
+	
+	@GetMapping("/hola2")
+	public String pruebaPorMynor(){
+		return "index";
+	}
 }
