@@ -13,8 +13,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "tMunicipio")
-public class MUNICIPIO extends AbstractEntity implements Serializable{
+@Table(name = "t_municipio")
+public class TMunicipio extends AbstractEntity implements Serializable{
 
 	/**
 	 * 
