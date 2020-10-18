@@ -1,13 +1,17 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="t_usuarios")
@@ -22,11 +26,14 @@ private static final long serialVersionUID = 1L;
     private String password;
     private Long enabled;
     
+    @OneToMany(mappedBy = "tUsuario")
+    private List<TAuthorities> tAuthorities;
     
+	
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setIdUsuario(Long id) {
 		this.id = id;
 	}
 	public String getUsername() {
