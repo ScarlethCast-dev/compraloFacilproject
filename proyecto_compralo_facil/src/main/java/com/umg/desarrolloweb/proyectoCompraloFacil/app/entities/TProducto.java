@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="tProductos")
-public class PRODUCTO extends AbstractEntity implements Serializable{
+@Table(name ="t_productos")
+public class TProducto extends AbstractEntity implements Serializable{
 	
 private static final long serialVersionUID = 1L;
 	
