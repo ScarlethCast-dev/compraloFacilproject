@@ -10,7 +10,7 @@ public class pruebaController{
 
 	@GetMapping("/hola")
 	public String prueba(){
-		return "<Probando el funcionamiento con el repositorio en GIT 22222 2.0";
+		return "index";
 	}
 	
 	@GetMapping("/hola1")
