@@ -1,7 +1,7 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
-
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 1L;
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="dd-MM-yyyy")
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
     
     private String telefono;
     private String correo;
