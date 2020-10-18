@@ -15,8 +15,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="tEmpleados")
-public class EMPLEADO extends AbstractEntity implements Serializable {
+@Table(name="t_empleados")
+public class TEmpleado extends AbstractEntity implements Serializable {
 
 private static final long serialVersionUID = 1L;
 	

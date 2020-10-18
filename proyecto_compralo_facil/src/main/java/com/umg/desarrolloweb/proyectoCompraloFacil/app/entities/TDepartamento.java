@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="tDepartamento")
-public class DEPARTAMENTO extends AbstractEntity implements Serializable {
+@Table(name ="t_departamento")
+public class TDepartamento extends AbstractEntity implements Serializable {
 
 	/**
 	 * 
