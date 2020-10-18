@@ -2,7 +2,6 @@ package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,11 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name = "tMunicipio")
-public class MUNICIPIO extends AbstractEntity implements Serializable{
+@Table(name ="tEstadoCuenta")
+public class ESTADO_CUENTA extends AbstractEntity implements Serializable{
 
 	/**
 	 * 
@@ -22,25 +19,26 @@ public class MUNICIPIO extends AbstractEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_municipio")
+	@Column(name = "id_estado_cuenta")
     private Long id;
-	@Column(name = "nombre_municipio")
-    private String nombreMunicipio;
 	
+    private String direccion;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNombreMunicipio() {
-		return nombreMunicipio;
-	}
-	public void setNombreMunicipio(String nombreMunicipio) {
-		this.nombreMunicipio = nombreMunicipio;
+
+	public String getDireccion() {
+		return direccion;
 	}
 
-
-	
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+    
 
 }
