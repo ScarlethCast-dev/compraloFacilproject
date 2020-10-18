@@ -62,10 +62,10 @@ private static final long serialVersionUID = 1L;
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getTelefono() {
