@@ -17,8 +17,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name = "tClientes")
-public class CLIENTE extends AbstractEntity implements Serializable{
+@Table(name = "t_empleados")
+public class TCliente extends AbstractEntity implements Serializable{
 
 
     /**
