@@ -45,52 +45,7 @@ public class TCliente extends AbstractEntity implements Serializable{
     private String correo;
     private String foto;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     
@@ -103,7 +58,6 @@ public class TCliente extends AbstractEntity implements Serializable{
    
     @OneToMany(mappedBy = "tCliente")
     private List<THistorial>tHistorial;
-    
     
     
     
