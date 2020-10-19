@@ -19,18 +19,19 @@
 					<li class="list-group-item" th:text="${cliente.telefono}"></li>
 					<li class="list-group-item" th:text="${cliente.correo}"></li>
 				</ul>
-
+				
+				
 				<table class="table table-bordered table-striped my-4">
 					<thead>
 						<tr>
-							<th>Id</th>
 							<th>Descripcion</th>
 							<th>Codigo Postal</th>
+							<th>Municipio</th>
+							<th>Departamento</th>
 						</tr>
 					</thead>
 					<tbody>
 							<tr th:each="direccion: ${cliente.tDirecciones}">
-							<td th:text="${direccion.idDirecciones}"></td>
 							<td th:text="${direccion.descDireccion}"></td>
 							<td th:text="${direccion.codigoPostal}"></td>
 							<td th:text="${direccion.tMunicipio.nombreMunicipio}"></td>
