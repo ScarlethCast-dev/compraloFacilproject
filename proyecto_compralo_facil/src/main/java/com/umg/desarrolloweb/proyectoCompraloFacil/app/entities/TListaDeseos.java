@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="t_lista_deseos")
-public class TListaDesos extends AbstractEntity implements Serializable {
+public class TListaDeseos extends AbstractEntity implements Serializable {
 
 	/**
 	 * 
@@ -36,10 +36,53 @@ public class TListaDesos extends AbstractEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="dd-MM-yyyy")
     private Date fechaBusqueda;
+	
+	@Column(name = "id_cliente")
+	private Long idCliente;
+
+
+	@ManyToOne
+	@JoinColumn(name = "id_cliente" , insertable = false, updatable = false)
+	private TCliente tCliente;
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getLinkProducto() {
+		return linkProducto;
+	}
+
+
+	public void setLinkProducto(String linkProducto) {
+		this.linkProducto = linkProducto;
+	}
+
+
+	public Date getFechaBusqueda() {
+		return fechaBusqueda;
+	}
+
+
+	public void setFechaBusqueda(Date fechaBusqueda) {
+		this.fechaBusqueda = fechaBusqueda;
+	}
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
 
 	
-	@ManyToOne
-	@JoinColumn(name = "id_cliente")
-	TCliente clientes;
 	
 }
