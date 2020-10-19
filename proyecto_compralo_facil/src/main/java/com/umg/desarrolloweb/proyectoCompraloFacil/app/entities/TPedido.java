@@ -57,6 +57,11 @@ public class TPedido extends AbstractEntity implements Serializable  {
 	@OneToMany(mappedBy = "tPedido")
     private List<TCuenta> tCuenta;
 	
+	@OneToMany(mappedBy = "tPedido")
+    private List<TDetallePedido> tDetallePedidos;
+	
+	@OneToMany(mappedBy = "tPedido")
+    private List<TFactura> tFactura;
 
 	public Long getId() {
 		return id;
