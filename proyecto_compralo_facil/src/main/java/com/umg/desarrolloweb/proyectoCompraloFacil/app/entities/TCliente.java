@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name = "t_empleados")
+@Table(name = "t_clientes")
 public class TCliente extends AbstractEntity implements Serializable{
 
 
