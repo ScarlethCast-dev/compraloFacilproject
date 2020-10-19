@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name = "t_empleados")
+@Table(name = "t_clientes")
 public class TCliente extends AbstractEntity implements Serializable{
 
 
@@ -46,14 +46,16 @@ public class TCliente extends AbstractEntity implements Serializable{
     private String foto;
     
 
-    
-    
-    
+    @OneToMany(mappedBy = "tCliente")
+    private List<TPedido> tPedido;
+
+    @OneToMany(mappedBy = "tCliente")
+    private List<TListaDeseos>tListaDeseo;
+       
+    @OneToMany(mappedBy = "tCliente")
+    private List<THistorial>tHistorial;
     
 
-    
-    
-    
 	public Long getId() {
 		return id;
 	}
