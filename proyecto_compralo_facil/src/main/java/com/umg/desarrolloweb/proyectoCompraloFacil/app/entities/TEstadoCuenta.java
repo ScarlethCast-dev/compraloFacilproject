@@ -27,7 +27,7 @@ public class TEstadoCuenta extends AbstractEntity implements Serializable {
 	private String direccion;
 	
 	@OneToMany(mappedBy = "tEstadoCuenta")
-    private List<TPedido> tPedido;
+    private List<TCuenta> tCuenta;
 
 	public Long getId() {
 		return id;

@@ -22,9 +22,9 @@
 							<td>Nombre</td>
 							<td>Apellido</td>
 							<td>Dpi</td>
-							<td>Fecha Nacimiento</td>
 							<td>Telefono</td>
 							<td>Nit</td>
+							<td>Fecha Nacimiento</td>
 							<td>Correo</td>
 							<td>Editar</td>
 							<td>Eliminar</td>
@@ -32,13 +32,14 @@
 					</thead>
 					<tbody>
 						<tr th:each="cliente: ${clientes}"
-							th:style="${cliente.direccion == null} ? 'background-color: red'">
+							th:style="${cliente.dpi == null} ? 'background-color: red'">
 							<td><a class="btn btn-primary btn-xs"
-								th:href="@{/detalle-cliente/} + ${cliente.id}" th:text="${cliente.id}"></a></td>
+								th:href="@{detalle-cliente/} + ${cliente.id}" th:text="${cliente.id}"></a></td>
 							<td th:text="${cliente.nombre}"></td>
 							<td th:text="${cliente.apellido}"></td>
 							<td th:text="${cliente.dpi}"></td>
 							<td th:text="${cliente.telefono}"></td>
+							<td th:text="${cliente.nit}"></td>
 							<td th:text="${cliente.fechaNacimiento}"></td>
 							<td th:text="${cliente.correo}"></td>
 							<td class="text-center"><a

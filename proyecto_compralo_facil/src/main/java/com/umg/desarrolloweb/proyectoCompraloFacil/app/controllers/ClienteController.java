@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,8 @@ import com.umg.desarrolloweb.proyectoCompraloFacil.app.util.PageRender;
 
 
 
-@RequestMapping("/Clientes")
+
+@Controller
 public class ClienteController {
 	
 	
@@ -88,13 +90,13 @@ public class ClienteController {
 
 		if (tcliente.getId() != null && tcliente.getId() > 0) {
 			TCliente cliente2 = clienteRepository.findById(tcliente.getId()).get();
-			audit = new Audit("Diego mas pilas de todos :v");
+			audit = new Audit("Diego Modificador");
 			tcliente.setAudit(audit);
 			tcliente.setId(cliente2.getId());
 			tcliente.getAudit().setTsCreated(cliente2.getAudit().getTsCreated());
 			tcliente.getAudit().setUsuCreated(cliente2.getAudit().getUsuCreated());
 		} else {
-			audit = new Audit("Diego");
+			audit = new Audit("Diego Creador");
 			tcliente.setAudit(audit);
 		}
 
