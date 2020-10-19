@@ -2,6 +2,7 @@ package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,6 +45,12 @@ public class TCuenta extends AbstractEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_estado_cuenta", insertable = false, updatable = false)
 	private TEstadoCuenta tEstadoCuenta;
+	
+	@OneToMany(mappedBy = "tCliente")
+    private List<TListaDeseos>tListaDeseo;
+   
+    @OneToMany(mappedBy = "tCliente")
+    private List<THistorial>tHistorial;
 	
 	public Long getIdCuenta() {
 		return idCuenta;
