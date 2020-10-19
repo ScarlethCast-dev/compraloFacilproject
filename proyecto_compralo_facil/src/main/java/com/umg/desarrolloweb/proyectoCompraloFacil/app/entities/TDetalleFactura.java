@@ -22,14 +22,21 @@ public class TDetalleFactura extends AbstractEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_detalle_factura")
 	private Long idDetalleFactura;
-	
-	@Column(name = "descripcion_producto")
-	private Long descripcionProducto;
-	
 	private BigDecimal precio;
 	
 	private Long cantidad;
 	
+	@Column(name = "descripcion_producto")
+	private Long descripcionProducto;
+	
+	public Long getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Long cantidad) {
+		this.cantidad = cantidad;
+	}
+
 	@Column(name = "id_factura")
 	private Long idFactura;
 	
