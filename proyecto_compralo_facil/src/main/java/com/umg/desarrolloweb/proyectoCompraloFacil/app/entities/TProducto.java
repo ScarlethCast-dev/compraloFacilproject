@@ -2,11 +2,13 @@ package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,10 @@ private static final long serialVersionUID = 1L;
     private BigDecimal precio;
     private String foto;
     
+    
+    
+	 @OneToMany(mappedBy = "tProducto")
+	 private List<TPedido> tPedido;
     
 	public Long getId() {
 		return id;

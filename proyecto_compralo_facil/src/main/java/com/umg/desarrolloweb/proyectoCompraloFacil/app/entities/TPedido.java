@@ -42,6 +42,11 @@ public class TPedido extends AbstractEntity implements Serializable  {
 	@Column(name="id_metodo_envio")
 	private Long idMetodoEnvio;
 	
+	@Column(name="id_producto")
+	private Long idProducto;
+	
+	
+
 	@ManyToOne
 	@JoinColumn(name="id_estado_pedido", insertable=false, updatable = false)
 	private TEstadoPedido tEstadoPedido; 
@@ -54,6 +59,10 @@ public class TPedido extends AbstractEntity implements Serializable  {
 	@JoinColumn(name="id_metodo_envio", insertable=false, updatable=false)
 	private TMetodoEnvio tMetodoEnvio;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_producto", insertable=false, updatable=false)
+	private TProducto tProducto;
+	
 	@OneToMany(mappedBy = "tPedido")
     private List<TCuenta> tCuenta;
 	
@@ -62,6 +71,9 @@ public class TPedido extends AbstractEntity implements Serializable  {
 	
 	@OneToMany(mappedBy = "tPedido")
     private List<TFactura> tFactura;
+	
+	@OneToMany(mappedBy = "tPedido")
+    private List<TTracking> tTracking;
 
 	public Long getId() {
 		return id;
@@ -94,7 +106,22 @@ public class TPedido extends AbstractEntity implements Serializable  {
 	public void setIdMetodoEnvio(Long idMetodoEnvio) {
 		this.idMetodoEnvio = idMetodoEnvio;
 	}
-	
+	public Date getFechaPedido() {
+		return fechaPedido;
+	}
+
+	public void setFechaPedido(Date fechaPedido) {
+		this.fechaPedido = fechaPedido;
+	}
+
+	public Long getIdProducto() {
+		return idProducto;
+	}
+
+	public void setIdProducto(Long idProducto) {
+		this.idProducto = idProducto;
+	}
+
 	
 	
 	
