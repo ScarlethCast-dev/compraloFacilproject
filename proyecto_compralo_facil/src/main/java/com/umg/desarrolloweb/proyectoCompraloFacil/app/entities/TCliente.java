@@ -9,7 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 
+=======
+import javax.persistence.OneToMany;
+>>>>>>> f268568350e57fa104c193f793f4af969f8a6b4f
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,7 +49,12 @@ public class TCliente extends AbstractEntity implements Serializable{
     private String correo;
     private String foto;
     
+<<<<<<< HEAD
  
+=======
+    @OneToMany(mappedBy = "tCliente")
+    private List<TPedido> tPedido;
+>>>>>>> f268568350e57fa104c193f793f4af969f8a6b4f
     
     
 	public Long getId() {
