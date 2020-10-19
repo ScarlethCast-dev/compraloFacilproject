@@ -45,6 +45,59 @@ public class TCliente extends AbstractEntity implements Serializable{
     private String correo;
     private String foto;
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @OneToMany(mappedBy = "tCliente")
     private List<TListaDeseos>tListaDeseo;
    
