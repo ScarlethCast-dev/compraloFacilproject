@@ -1,6 +1,7 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -58,6 +59,14 @@ public class TCliente extends AbstractEntity implements Serializable{
     @OneToMany(mappedBy = "tCliente")
     private List<TDirecciones>tDirecciones;
     
+    
+    
+    
+	public TCliente() {
+		this.tDirecciones = new ArrayList<TDirecciones>();
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -111,6 +120,14 @@ public class TCliente extends AbstractEntity implements Serializable{
 	}
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	
+	
+	public List<TDirecciones> gettDirecciones() {
+		return tDirecciones;
+	}
+	public void settDirecciones(List<TDirecciones> tDirecciones) {
+		this.tDirecciones = tDirecciones;
 	}
     
     

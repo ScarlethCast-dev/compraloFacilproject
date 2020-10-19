@@ -27,8 +27,8 @@ public class TDepartamento extends AbstractEntity implements Serializable {
 	@Column(name = "nombre_depart")
     private String nombreDepartamento;
 	
-    @OneToMany(mappedBy = "tDepartamento")
-    private List<TDirecciones>tDirecciones;
+    /*@OneToMany(mappedBy = "tDepartamento")
+    private List<TDirecciones>tDirecciones;*/
 	
 	public Long getId() {
 		return id;

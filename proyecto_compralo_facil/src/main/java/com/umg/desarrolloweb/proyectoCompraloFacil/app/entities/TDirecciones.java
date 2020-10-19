@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,8 +42,8 @@ public class TDirecciones extends AbstractEntity implements Serializable {
 	private String idDepartamento;
 	
 	
-	@ManyToOne
-	@JoinColumn(name="cliente_id", insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name="cliente_id", insertable = false, updatable = false)
 	private TCliente tCliente;
 	
 	@ManyToOne
@@ -102,6 +103,22 @@ public class TDirecciones extends AbstractEntity implements Serializable {
 
 	public void setIdDepartamento(String idDepartamento) {
 		this.idDepartamento = idDepartamento;
+	}
+
+	public TMunicipio gettMunicipio() {
+		return tMunicipio;
+	}
+
+	public void settMunicipio(TMunicipio tMunicipio) {
+		this.tMunicipio = tMunicipio;
+	}
+
+	public TDepartamento gettDepartamento() {
+		return tDepartamento;
+	}
+
+	public void settDepartamento(TDepartamento tDepartamento) {
+		this.tDepartamento = tDepartamento;
 	}
 	
 	

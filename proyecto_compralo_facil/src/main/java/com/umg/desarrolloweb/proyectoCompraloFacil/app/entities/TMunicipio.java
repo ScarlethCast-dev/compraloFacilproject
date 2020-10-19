@@ -29,8 +29,8 @@ public class TMunicipio extends AbstractEntity implements Serializable{
     private String nombreMunicipio;
 	
 	
-    @OneToMany(mappedBy = "tMunicipio")
-    private List<TDirecciones>tDirecciones;
+    /*@OneToMany(mappedBy = "tMunicipio")
+    private List<TDirecciones>tDirecciones;*/
 	
 	public Long getId() {
 		return id;
