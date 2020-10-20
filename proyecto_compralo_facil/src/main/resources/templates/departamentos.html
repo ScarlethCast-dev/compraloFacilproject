@@ -17,12 +17,14 @@
 				<nav th:replace="paginator-nav :: paginator"></nav>
 				
 				<tbody>
-				<center>
+			
 				<table class="table table-bordered table-dark" th:if="${!departamentos.isEmpty()}">
 				  <thead class="bg-dark text-white text-center" align:"center">
 				    <tr>
 				      <th scope="col">Id</th>
 				      <th scope="col">Departamento</th>
+				      <th scope="col">Editar</th>
+				      <th scope="col">Eliminar</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -31,8 +33,15 @@
 					th:href="@{detalle-pedido/} + ${departamento.id}" th:text="${departamento.id}"></a></td>  
 				     
 				     <td th:text="${departamento.nombreDepartamento}"></td>
+				     <td class="text-center"><a
+								class="btn btn-outline-success btn-xs"
+								th:href="@{/editar-departamento/} + ${departamento.id}">Editar</a></td>
+							<td class="text-center" ><a
+								class="btn btn-outline-danger btn-xs"
+								th:href="@{/eliminar-departamento/} + ${departamento.id}"
+								onclick="return confirm('Desea eliminar el Departamento?');">Eliminar</a></td>
 				    </tr>
-				   </center>
+				 
 				  </tbody>
 				  
 				</table>	
