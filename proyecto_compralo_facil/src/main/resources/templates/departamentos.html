@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-tittle">
+
+					<a th:href="@{/nuevo-departamento}"
+						class="btn btn-outline-primary btn-xs">Agregar Departamento</a>
+				</h4>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+				
+				<tbody>
+				<center>
+				<table class="table table-bordered table-dark" th:if="${!departamentos.isEmpty()}">
+				  <thead class="bg-dark text-white text-center" align:"center">
+				    <tr>
+				      <th scope="col">Id</th>
+				      <th scope="col">Departamento</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="departamento: ${departamentos}" th:style="${departamento.nombreDepartamento == null} ? 'background-color: red'" >
+				    <td><a class="btn btn-primary btn-xs"
+					th:href="@{detalle-pedido/} + ${departamento.id}" th:text="${departamento.id}"></a></td>  
+				     
+				     <td th:text="${departamento.nombreDepartamento}"></td>
+				    </tr>
+				   </center>
+				  </tbody>
+				  
+				</table>	
+				
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
