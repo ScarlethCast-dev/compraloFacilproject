@@ -1,6 +1,7 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,6 +27,11 @@ private static final long serialVersionUID = 1L;
     private List<TPedido> tPedido;
     
 	
+	
+	public TEstadoPedido() {
+		this.tPedido = new ArrayList<TPedido>();
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -37,7 +43,15 @@ private static final long serialVersionUID = 1L;
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public List<TPedido> gettPedido() {
+		return tPedido;
+	}
+	public void settPedido(List<TPedido> tPedido) {
+		this.tPedido = tPedido;
 	} 
+	
+	
 
 }
 

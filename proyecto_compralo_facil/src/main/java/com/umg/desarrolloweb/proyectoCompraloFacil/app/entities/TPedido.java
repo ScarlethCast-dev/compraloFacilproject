@@ -32,35 +32,21 @@ public class TPedido extends AbstractEntity implements Serializable  {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="dd-MM-yyyy")
     private Date fechaPedido;
-	
-	@Column(name="id_estado_pedido")
-	private Long idEstadoPedido;
-	
-	@Column(name="id_cliente")
-	private Long idCliente;
-	
-	@Column(name="id_metodo_envio")
-	private Long idMetodoEnvio;
-	
-	@Column(name="id_producto")
-	private Long idProducto;
-	
-	
 
 	@ManyToOne
-	@JoinColumn(name="id_estado_pedido", insertable=false, updatable = false)
+	//@JoinColumn(name="id_estado_pedido", insertable=false, updatable = false)
 	private TEstadoPedido tEstadoPedido; 
 	
 	@ManyToOne
-	@JoinColumn(name="id_cliente", insertable=false, updatable=false)
+	//@JoinColumn(name="id_cliente", insertable=false, updatable=false)
 	private TCliente tCliente;
 	
 	@ManyToOne
-	@JoinColumn(name="id_metodo_envio", insertable=false, updatable=false)
+	//@JoinColumn(name="id_metodo_envio", insertable=false, updatable=false)
 	private TMetodoEnvio tMetodoEnvio;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_producto", insertable=false, updatable=false)
+	//@JoinColumn(name = "id_producto", insertable=false, updatable=false)
 	private TProducto tProducto;
 	
 	@OneToMany(mappedBy = "tPedido")
@@ -83,29 +69,6 @@ public class TPedido extends AbstractEntity implements Serializable  {
 		this.id = id;
 	}
 
-	public Long getIdEstadoPedido() {
-		return idEstadoPedido;
-	}
-
-	public void setIdEstadoPedido(Long idEstadoPedido) {
-		this.idEstadoPedido = idEstadoPedido;
-	}
-
-	public Long getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	public Long getIdMetodoEnvio() {
-		return idMetodoEnvio;
-	}
-
-	public void setIdMetodoEnvio(Long idMetodoEnvio) {
-		this.idMetodoEnvio = idMetodoEnvio;
-	}
 	public Date getFechaPedido() {
 		return fechaPedido;
 	}
@@ -114,15 +77,32 @@ public class TPedido extends AbstractEntity implements Serializable  {
 		this.fechaPedido = fechaPedido;
 	}
 
-	public Long getIdProducto() {
-		return idProducto;
+	public TEstadoPedido gettEstadoPedido() {
+		return tEstadoPedido;
 	}
 
-	public void setIdProducto(Long idProducto) {
-		this.idProducto = idProducto;
+	public void settEstadoPedido(TEstadoPedido tEstadoPedido) {
+		this.tEstadoPedido = tEstadoPedido;
 	}
 
+	public TMetodoEnvio gettMetodoEnvio() {
+		return tMetodoEnvio;
+	}
+
+	public void settMetodoEnvio(TMetodoEnvio tMetodoEnvio) {
+		this.tMetodoEnvio = tMetodoEnvio;
+	}
+
+	public TCliente gettCliente() {
+		return tCliente;
+	}
+
+	public void settCliente(TCliente tCliente) {
+		this.tCliente = tCliente;
+	}
 	
+	
+
 	
 	
 }

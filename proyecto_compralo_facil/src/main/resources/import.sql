@@ -35,3 +35,19 @@ INSERT INTO t_direcciones(ts_created, ts_modified, usu_created, usu_modified, co
 INSERT INTO t_direcciones(ts_created, ts_modified, usu_created, usu_modified, codigo_postal, desc_direccion, cliente_id, departamento_id, municipio_id, t_cliente_id) values ('1999-12-31 23:59:59','1999-12-31 23:59:59','Jefe','Jefe', '14013', 'Zona 9 2-2', 'null', 2, 5, 5);
 INSERT INTO t_direcciones(ts_created, ts_modified, usu_created, usu_modified, codigo_postal, desc_direccion, cliente_id, departamento_id, municipio_id, t_cliente_id) values ('1999-12-31 23:59:59','1999-12-31 23:59:59','Jefe','Jefe', '14013', 'Zona 10 2-2', 'null', 2, 5, 5);
 
+
+/*Estado pedido*/
+INSERT INTO t_estado_pedido(ts_created, ts_modified, usu_created, usu_modified, descripcion) values ('1999-12-31 23:59:59','1999-12-31 23:59:59','Jefe','Jefe', 'En Bodega Guatemala');
+
+/*Metodo Envio*/
+INSERT INTO t_metodo_envio(ts_created, ts_modified, usu_created, usu_modified, descripcion) values ('1999-12-31 23:59:59','1999-12-31 23:59:59','Jefe','Jefe', 'A domicilio');
+
+/*Producto*/
+
+INSERT INTO t_productos(ts_created, ts_modified, usu_created, usu_modified, cantidad, descripcion, foto, nombre, precio) values ('1999-12-31 23:59:59','1999-12-31 23:59:59','Jefe','Jefe',10, 'Laptop', '', '', 3000);
+
+/*Pedido*/
+INSERT INTO t_pedido(ts_created, ts_modified, usu_created, usu_modified, fecha_pedido, t_cliente_id, t_estado_pedido_id_estado_pedido, t_metodo_envio_id_metodo_envio, t_producto_id) values ('1999-12-31 23:59:59','1999-12-31 23:59:59','Jefe','Jefe', '2020-01-01', '1', '1', '1', '1');
+
+
+
