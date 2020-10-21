@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<meta charset="utf-8"/>
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+	
+			
+				<ul class="list-group">
+					<li class="list-group-item active" th:text="${departamento.id}"></li>
+					<li class="list-group-item" th:text="${departamento.nombreDepartamento}"></li>
+				</ul>
+
+				<table class="table table-bordered table-striped my-4">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre departamento</th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr th:each="departamento: ${tDepartamentos}"> 
+							<td th:text="${departamento.id}"></td>
+							<td th:text="${departamento.nombreDepartamento}"></td>
+							
+							</tr> 
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
