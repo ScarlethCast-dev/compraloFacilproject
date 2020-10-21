@@ -1,11 +1,14 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,41 +35,24 @@ public class TPedido extends AbstractEntity implements Serializable  {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="dd-MM-yyyy")
     private Date fechaPedido;
-	
-	@Column(name="id_estado_pedido")
-	private Long idEstadoPedido;
-	
-	@Column(name="id_cliente")
-	private Long idCliente;
-	
-	@Column(name="id_metodo_envio")
-	private Long idMetodoEnvio;
-	
-	@Column(name="id_producto")
-	private Long idProducto;
-	
-	
 
-	@ManyToOne
-	@JoinColumn(name="id_estado_pedido", insertable=false, updatable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TEstadoPedido tEstadoPedido; 
 	
-	@ManyToOne
-	@JoinColumn(name="id_cliente", insertable=false, updatable=false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TCliente tCliente;
 	
-	@ManyToOne
-	@JoinColumn(name="id_metodo_envio", insertable=false, updatable=false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TMetodoEnvio tMetodoEnvio;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_producto", insertable=false, updatable=false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TProducto tProducto;
 	
 	@OneToMany(mappedBy = "tPedido")
     private List<TCuenta> tCuenta;
 	
-	@OneToMany(mappedBy = "tPedido")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_pedido")
     private List<TDetallePedido> tDetallePedidos;
 	
 	@OneToMany(mappedBy = "tPedido")
@@ -74,6 +60,13 @@ public class TPedido extends AbstractEntity implements Serializable  {
 	
 	@OneToMany(mappedBy = "tPedido")
     private List<TTracking> tTracking;
+	
+	
+	
+
+	public TPedido() {
+		this.tDetallePedidos = new ArrayList<TDetallePedido>();
+	}
 
 	public Long getId() {
 		return id;
@@ -83,29 +76,6 @@ public class TPedido extends AbstractEntity implements Serializable  {
 		this.id = id;
 	}
 
-	public Long getIdEstadoPedido() {
-		return idEstadoPedido;
-	}
-
-	public void setIdEstadoPedido(Long idEstadoPedido) {
-		this.idEstadoPedido = idEstadoPedido;
-	}
-
-	public Long getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	public Long getIdMetodoEnvio() {
-		return idMetodoEnvio;
-	}
-
-	public void setIdMetodoEnvio(Long idMetodoEnvio) {
-		this.idMetodoEnvio = idMetodoEnvio;
-	}
 	public Date getFechaPedido() {
 		return fechaPedido;
 	}
@@ -114,15 +84,40 @@ public class TPedido extends AbstractEntity implements Serializable  {
 		this.fechaPedido = fechaPedido;
 	}
 
-	public Long getIdProducto() {
-		return idProducto;
+	public TEstadoPedido gettEstadoPedido() {
+		return tEstadoPedido;
 	}
 
-	public void setIdProducto(Long idProducto) {
-		this.idProducto = idProducto;
+	public void settEstadoPedido(TEstadoPedido tEstadoPedido) {
+		this.tEstadoPedido = tEstadoPedido;
 	}
 
+	public TMetodoEnvio gettMetodoEnvio() {
+		return tMetodoEnvio;
+	}
+
+	public void settMetodoEnvio(TMetodoEnvio tMetodoEnvio) {
+		this.tMetodoEnvio = tMetodoEnvio;
+	}
+
+	public TCliente gettCliente() {
+		return tCliente;
+	}
+
+	public void settCliente(TCliente tCliente) {
+		this.tCliente = tCliente;
+	}
+
+	public List<TDetallePedido> gettDetallePedidos() {
+		return tDetallePedidos;
+	}
+
+	public void settDetallePedidos(List<TDetallePedido> tDetallePedidos) {
+		this.tDetallePedidos = tDetallePedidos;
+	}
 	
+	
+
 	
 	
 }
