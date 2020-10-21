@@ -1,6 +1,7 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,6 +31,12 @@ public class TMetodoEnvio extends AbstractEntity implements Serializable{
     @OneToMany(mappedBy = "tMetodoEnvio")
     private List<TPedido> tPedido;
     
+    
+    
+
+	public TMetodoEnvio() {
+		this.tPedido = new ArrayList<TPedido>();
+	}
 
 	public Long getId() {
 		return id;
@@ -46,6 +53,15 @@ public class TMetodoEnvio extends AbstractEntity implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	public List<TPedido> gettPedido() {
+		return tPedido;
+	}
+
+	public void settPedido(List<TPedido> tPedido) {
+		this.tPedido = tPedido;
+	}
     
+	
 
 }

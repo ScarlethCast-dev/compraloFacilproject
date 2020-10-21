@@ -64,7 +64,10 @@ public class TCliente extends AbstractEntity implements Serializable{
     
 	public TCliente() {
 		this.tDirecciones = new ArrayList<TDirecciones>();
+		this.tPedido = new ArrayList<TPedido>();
 	}
+	
+	
 	
 	
 	public Long getId() {
@@ -129,6 +132,18 @@ public class TCliente extends AbstractEntity implements Serializable{
 	public void settDirecciones(List<TDirecciones> tDirecciones) {
 		this.tDirecciones = tDirecciones;
 	}
+
+
+	public List<TPedido> gettPedido() {
+		return tPedido;
+	}
+
+
+	public void settPedido(List<TPedido> tPedido) {
+		this.tPedido = tPedido;
+	}
+	
+	
     
     
 }
