@@ -34,7 +34,7 @@ public class DepartamentoController {
 		model.addAttribute("titulo", "Listado de departamentos");
 		model.addAttribute("departamentos", tDepartamentos);
 		model.addAttribute("page", pageRender);
-		return "departamentos";
+		return "departamentos/departamentos";
 	}
 	
 	
@@ -48,7 +48,7 @@ public class DepartamentoController {
 
 		model.addAttribute("titulo", "Detalle Departamento: " + tDepartamentos.getNombreDepartamento());
 		model.addAttribute("departamento", tDepartamentos);
-		return "detalle-departamento-form";
+		return "departamentos/detalle-departamento-form";
 	}
 	
 	
@@ -57,7 +57,7 @@ public class DepartamentoController {
 		TDepartamento tdepartamento = new TDepartamento();
 		model.addAttribute("titulo", "Nuevo Departamento");
 		model.addAttribute("departamento", tdepartamento);
-		return "form-departamento";
+		return "departamentos/form-departamento";
 	}
 	
 	@RequestMapping(value = "/nuevo-departamento", method = RequestMethod.POST)

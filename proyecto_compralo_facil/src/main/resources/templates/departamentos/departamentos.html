@@ -30,7 +30,7 @@
 				  <tbody>
 				    <tr th:each="departamento: ${departamentos}" th:style="${departamento.nombreDepartamento == null} ? 'background-color: red'" >
 				    <td><a class="btn btn-primary btn-xs"
-					th:href="@{detalle-pedido/} + ${departamento.id}" th:text="${departamento.id}"></a></td>  
+					th:href="@{detalle-departamento/} + ${departamento.id}" th:text="${departamento.id}"></a></td>  
 				     
 				     <td th:text="${departamento.nombreDepartamento}"></td>
 				     <td class="text-center"><a
