@@ -1,11 +1,14 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,26 +36,23 @@ public class TPedido extends AbstractEntity implements Serializable  {
     @DateTimeFormat(pattern="dd-MM-yyyy")
     private Date fechaPedido;
 
-	@ManyToOne
-	//@JoinColumn(name="id_estado_pedido", insertable=false, updatable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TEstadoPedido tEstadoPedido; 
 	
-	@ManyToOne
-	//@JoinColumn(name="id_cliente", insertable=false, updatable=false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TCliente tCliente;
 	
-	@ManyToOne
-	//@JoinColumn(name="id_metodo_envio", insertable=false, updatable=false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TMetodoEnvio tMetodoEnvio;
 	
-	@ManyToOne
-	//@JoinColumn(name = "id_producto", insertable=false, updatable=false)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TProducto tProducto;
 	
 	@OneToMany(mappedBy = "tPedido")
     private List<TCuenta> tCuenta;
 	
-	@OneToMany(mappedBy = "tPedido")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_pedido")
     private List<TDetallePedido> tDetallePedidos;
 	
 	@OneToMany(mappedBy = "tPedido")
@@ -60,6 +60,13 @@ public class TPedido extends AbstractEntity implements Serializable  {
 	
 	@OneToMany(mappedBy = "tPedido")
     private List<TTracking> tTracking;
+	
+	
+	
+
+	public TPedido() {
+		this.tDetallePedidos = new ArrayList<TDetallePedido>();
+	}
 
 	public Long getId() {
 		return id;
@@ -99,6 +106,14 @@ public class TPedido extends AbstractEntity implements Serializable  {
 
 	public void settCliente(TCliente tCliente) {
 		this.tCliente = tCliente;
+	}
+
+	public List<TDetallePedido> gettDetallePedidos() {
+		return tDetallePedidos;
+	}
+
+	public void settDetallePedidos(List<TDetallePedido> tDetallePedidos) {
+		this.tDetallePedidos = tDetallePedidos;
 	}
 	
 	

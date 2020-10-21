@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,13 +28,6 @@ public class TDetallePedido extends AbstractEntity implements Serializable{
 	private BigDecimal precio;
 	private Long cantidad;
 	
-	@Column(name = "id_pedido")
-	private String idPedido;
-	
-	@ManyToOne
-	@JoinColumn(name="id_pedido", insertable = false, updatable = false)
-	private TPedido tPedido;
-
 	public Long getIdDetallePedido() {
 		return idDetallePedido;
 	}
@@ -76,16 +67,5 @@ public class TDetallePedido extends AbstractEntity implements Serializable{
 	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
-
-	public String getIdPedido() {
-		return idPedido;
-	}
-
-	public void setIdPedido(String idPedido) {
-		this.idPedido = idPedido;
-	}
-	
-	
-	
-	
+		
 }

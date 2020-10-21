@@ -1,6 +1,7 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.controllers;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,9 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.Audit;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TCliente;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TEstadoPedido;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TMetodoEnvio;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TPedido;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.ClienteRepository;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.EstadoPedidoRepository;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.MetodoEnvioRepository;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.PedidoRepository;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.util.PageRender;
 
@@ -23,6 +29,15 @@ public class PedidoController {
 	
 	@Autowired
 	private PedidoRepository pedidoRepository;
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
+	
+	@Autowired
+	private EstadoPedidoRepository estadoPedidoRepository;
+	
+	@Autowired
+	private MetodoEnvioRepository metodoEnvioRepository;
 	
 
 	@RequestMapping(value = "/listar-pedido", method = RequestMethod.GET)
@@ -49,20 +64,22 @@ public class PedidoController {
 
 		model.addAttribute("titulo", "Detalle Pedido No. : " + tpedidos.getId());
 		model.addAttribute("pedido", tpedidos);
-		return "detalle-pedido-form";
+		return "pedidos/detalle-pedido-form";
 	}
 	
 	
 	@RequestMapping(value = "/nuevo-pedido", method = RequestMethod.GET)
 	public String nuevoPedido(Model model) {
 		TPedido tpedidos = new TPedido();
+		
 		model.addAttribute("titulo", "Nuevo Pedido");
-		model.addAttribute("cliente", tpedidos);
-		return "form-pedido";
+		model.addAttribute("pedido", tpedidos);
+		return "pedidos/form-pedido";
 	}
 	
+	
 	@RequestMapping(value = "/nuevo-pedido", method = RequestMethod.POST)
-	public String guardarPedido(@RequestParam("file") MultipartFile foto, TPedido tpedidos) {
+	public String guardarPedido(TPedido tpedidos) {
 		Audit audit = null;
 		
 		if (tpedidos.getId() != null && tpedidos.getId() > 0) {
@@ -77,8 +94,16 @@ public class PedidoController {
 			tpedidos.setAudit(audit);
 		}
 
+		TCliente cliente = clienteRepository.findById(tpedidos.gettCliente().getId()).get();
+		TEstadoPedido estado = estadoPedidoRepository.findById(tpedidos.gettEstadoPedido().getId()).get();
+		TMetodoEnvio envio = metodoEnvioRepository.findById(tpedidos.gettMetodoEnvio().getId()).get();
+		
+		tpedidos.settCliente(cliente);
+		tpedidos.settEstadoPedido(estado);
+		tpedidos.settMetodoEnvio(envio);
+			
 		pedidoRepository.save(tpedidos);
-		return "redirect:/listar-pedido";
+		return "redirect:listar-pedido";
 	}
 	
 	@RequestMapping(value = "/editar-pedido/{id}", method = RequestMethod.GET)
@@ -91,7 +116,7 @@ public class PedidoController {
 		}
 		model.addAttribute("titulo", "Editar Pedido");
 		model.addAttribute("pedido", tpedidos);
-		return "form-pedido";
+		return "pedidos/form-pedido";
 	}
 	
 	@RequestMapping(value = "/eliminar-pedido/{id}", method = RequestMethod.GET)
