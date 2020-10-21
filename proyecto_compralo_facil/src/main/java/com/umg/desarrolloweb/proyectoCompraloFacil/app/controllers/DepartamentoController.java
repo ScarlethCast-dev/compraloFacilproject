@@ -24,7 +24,7 @@ public class DepartamentoController {
 	private DepartamentoRepository departamentoRepository;
 	
 	@RequestMapping(value = "/listar-departamentos", method = RequestMethod.GET)
-	public String listarDepartamentos(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+	public String listarDepartamentos(@RequestParam(name = "pages", defaultValue = "0") int page, Model model) {
 
 		Pageable pageRequest = PageRequest.of(page, 4);
 
