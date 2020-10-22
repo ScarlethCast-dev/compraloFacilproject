@@ -24,7 +24,7 @@ public class TDirecciones extends AbstractEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_direcciones")
-	private Long idDirecciones;
+	private Long id;
 	
 	@Column(name = "desc_direccion")
 	private String descDireccion;
@@ -57,12 +57,20 @@ public class TDirecciones extends AbstractEntity implements Serializable {
 	
 	
 
-	public Long getIdDirecciones() {
-		return idDirecciones;
+	public Long getId() {
+		return id;
+	}
+
+	public TCliente gettCliente() {
+		return tCliente;
+	}
+
+	public void settCliente(TCliente tCliente) {
+		this.tCliente = tCliente;
 	}
 
 	public void setIdDirecciones(Long idDirecciones) {
-		this.idDirecciones = idDirecciones;
+		this.id = idDirecciones;
 	}
 
 	public String getDescDireccion() {

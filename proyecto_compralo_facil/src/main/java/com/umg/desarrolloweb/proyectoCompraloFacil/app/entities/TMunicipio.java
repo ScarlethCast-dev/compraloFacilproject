@@ -1,13 +1,14 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -28,9 +29,15 @@ public class TMunicipio extends AbstractEntity implements Serializable{
     private String nombreMunicipio;
 	
 	
-    /*@OneToMany(mappedBy = "tMunicipio")
-    private List<TDirecciones>tDirecciones;*/
+    @OneToMany(mappedBy = "tMunicipio")
+    private List<TDirecciones>tDirecciones;
 	
+	public List<TDirecciones> gettDirecciones() {
+		return tDirecciones;
+	}
+	public void settDirecciones(List<TDirecciones> tDirecciones) {
+		this.tDirecciones = tDirecciones;
+	}
 	public Long getId() {
 		return id;
 	}
