@@ -82,7 +82,7 @@ public class DepartamentoController {
 	}
 	
 	@RequestMapping(value = "/editar-departamento/{id}", method = RequestMethod.GET)
-	public String editarDepartamento(@PathVariable(value = "id") Long id, Model model) {
+	public String editarMunicipio(@PathVariable(value = "id") Long id, Model model) {
 		TDepartamento tdepartamento = null;
 		if (id > 0) {
 			tdepartamento = departamentoRepository.findById(id).get();
@@ -91,7 +91,7 @@ public class DepartamentoController {
 		}
 		model.addAttribute("titulo", "Editar Departamento");
 		model.addAttribute("departamento", tdepartamento);
-		return "form-departamento";
+		return "departamentos/form-departamento";
 	}
 	
 	@RequestMapping(value = "/eliminar-departamento/{id}", method = RequestMethod.GET)

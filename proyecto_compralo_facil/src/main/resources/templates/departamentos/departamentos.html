@@ -15,8 +15,6 @@
 						class="btn btn-outline-primary btn-xs">Agregar Departamento</a>
 				</h4>
 				<nav th:replace="paginator-nav :: paginator"></nav>
-				
-				<tbody>
 			
 				<table class="table table-bordered table-dark" th:if="${!departamentos.isEmpty()}">
 				  <thead class="bg-dark text-white text-center" align:"center">
@@ -28,19 +26,19 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr th:each="departamento: ${departamentos}" th:style="${departamento.nombreDepartamento == null} ? 'background-color: red'" >
-				    <td><a class="btn btn-primary btn-xs"
-					th:href="@{detalle-departamento/} + ${departamento.id}" th:text="${departamento.id}"></a></td>  
-				     
-				     <td th:text="${departamento.nombreDepartamento}"></td>
-				     <td class="text-center"><a
+				  <tr th:each="departamento: ${departamentos}"
+							th:style="${departamento.nombreDepartamento== null} ? 'background-color: red'">
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{detalle-departamento/} + ${departamento.id}" th:text="${departamento.id}"></a></td>
+							<td th:text="${departamento.nombreDepartamento}"></td>
+							<td class="text-center"><a
 								class="btn btn-outline-success btn-xs"
 								th:href="@{/editar-departamento/} + ${departamento.id}">Editar</a></td>
 							<td class="text-center" ><a
 								class="btn btn-outline-danger btn-xs"
 								th:href="@{/eliminar-departamento/} + ${departamento.id}"
 								onclick="return confirm('Desea eliminar el Departamento?');">Eliminar</a></td>
-				    </tr>
+						</tr>
 				 
 				  </tbody>
 				  
