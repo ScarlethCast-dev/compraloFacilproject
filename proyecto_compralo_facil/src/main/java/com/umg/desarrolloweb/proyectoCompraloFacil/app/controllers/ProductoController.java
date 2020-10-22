@@ -55,7 +55,7 @@ public class ProductoController {
 		}
 
 		model.addAttribute("titulo", "Detalle Producto: " + tproducto.getNombre());
-		model.addAttribute("producto", tproducto);
+		model.addAttribute("productos", tproducto);
 		return "detalle-producto-form";
 	}
 	
@@ -64,8 +64,8 @@ public class ProductoController {
 	public String nuevoProducto(Model model) {
 		TProducto tproducto = new TProducto();
 		model.addAttribute("titulo", "Nuevo Producto");
-		model.addAttribute("producto", tproducto);
-		return "templates/form-producto";
+		model.addAttribute("productos", tproducto);
+		return "form-producto";
 	}
 	
 	@RequestMapping(value = "/nuevo-producto", method = RequestMethod.POST)
@@ -113,7 +113,7 @@ public class ProductoController {
 			return "redirect:/listar-productos";
 		}
 		model.addAttribute("titulo", "Editar Producto");
-		model.addAttribute("producto", tproducto);
+		model.addAttribute("productos", tproducto);
 		return "form-producto";
 	}
 	
