@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-tittle">
+
+					<a th:href="@{/nuevo-producto}"
+						class="btn btn-outline-primary btn-xs">Agregar Producto</a>
+				</h4>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+				<table class="table table-striped " th:if="${!productos.isEmpty()}">
+					<thead class="bg-dark text-white text-center">
+						<tr>
+							<td>Id</td>
+							<td>Nombre</td>
+							<td>Descripcion</td>
+							<td>Cantidad</td>
+							<td>Precio</td>
+							<td>Editar</td>
+							<td>Eliminar</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="producto: ${productos}"
+							th:style="${producto.Cantidad == null} ? 'background-color: red'">
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{detalle-producto/} + ${producto.id}" th:text="${producto.id}"></a></td>
+							<td th:text="${producto.nombre}"></td>
+							<td th:text="${producto.descripcion}"></td>
+							<td th:text="${producto.cantidad}"></td>
+							<td th:text="${producto.precio}"></td>
+							<td class="text-center"><a
+								class="btn btn-outline-success btn-xs"
+								th:href="@{/editar-producto/} + ${producto.id}">Editar</a></td>
+							<td class="text-center" ><a
+								class="btn btn-outline-danger btn-xs"
+								th:href="@{/eliminar-producto/} + ${producto.id}"
+								onclick="return confirm('Desea eliminar el Producto?');">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

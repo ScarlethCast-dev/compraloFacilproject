@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-tittle">
+
+					<a th:href="@{/nuevo-estadoPedido}"
+						class="btn btn-outline-primary btn-xs">Agregar Estado de Pedido</a>
+				</h4>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+				<table class="table table-striped " th:if="${!estadoPedidos.isEmpty()}">
+					<thead class="bg-dark text-white text-center">
+						<tr>
+							<td>Id</td>
+							<td>Descripcion</td>
+							<td>Editar</td>
+							<td>Eliminar</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="estadoPedido: ${estadoPedidos}"
+							th:style="${estadoPedido.descripcion== null} ? 'background-color: red'">
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{detalle-estadoPedido/} + ${estadoPedido.id}" th:text="${estadoPedido.id}"></a></td>
+							<td th:text="${estadoPedido.descripcion}"></td>
+							<td class="text-center"><a
+								class="btn btn-outline-success btn-xs"
+								th:href="@{/editar-estadoPedido/} + ${estadoPedido.id}">Editar</a></td>
+							<td class="text-center" ><a
+								class="btn btn-outline-danger btn-xs"
+								th:href="@{/eliminar-estadoPedido/} + ${estadoPedido.id}"
+								onclick="return confirm('Desea eliminar el Estadp del Pedido?');">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
