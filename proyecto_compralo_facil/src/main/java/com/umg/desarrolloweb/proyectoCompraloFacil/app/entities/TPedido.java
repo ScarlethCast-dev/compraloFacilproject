@@ -56,12 +56,11 @@ public class TPedido extends AbstractEntity implements Serializable  {
     private List<TDetallePedido> tDetallePedidos;
 	
 	@OneToMany(mappedBy = "tPedido")
-    private List<TFactura> tFactura;
-	
-	@OneToMany(mappedBy = "tPedido")
     private List<TTracking> tTracking;
 	
-	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name= "id_factura")
+	private List<TFactura>tFactura;
 	
 
 	public TPedido() {

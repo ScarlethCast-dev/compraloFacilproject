@@ -19,8 +19,8 @@
 					<li class="list-group-item" th:text="${cliente.telefono}"></li>
 					<li class="list-group-item" th:text="${cliente.correo}"></li>
 				</ul>
-				
-				
+
+
 				<table class="table table-bordered table-striped my-4">
 					<thead>
 						<tr>
@@ -31,13 +31,33 @@
 						</tr>
 					</thead>
 					<tbody>
-							<tr th:each="direccion: ${cliente.tDirecciones}">
+						<tr th:each="direccion: ${cliente.tDirecciones}">
 							<td th:text="${direccion.descDireccion}"></td>
 							<td th:text="${direccion.codigoPostal}"></td>
 							<td th:text="${direccion.tMunicipio.nombreMunicipio}"></td>
 							<td th:text="${direccion.tDepartamento.nombreDepartamento}"></td>
-							
-							</tr>
+
+						</tr>
+					</tbody>
+				</table>
+<!-- 				<div th:if="${#lists.isEmpty(cliente.tFacturas)}]" class="alert alert-danger" role="alert" > -->
+<!-- 					El cliente <a href="#" class="alert-link"> NO TIENE FACTURAS </a> ingresadas. -->
+<!-- 				</div> -->
+
+				<table class="table table-bordered table-striped my-4">
+					<h1 align="center">Facturas asociadas</h1>>
+					<thead class="thead-inverse">
+						<th>No.</th>
+						<th>Fecha</th>
+						<th>Total</th>
+					</thead>
+					<tbody>
+						<tr th:each="factura: ${cliente.tDirecciones}">
+							<td th:text="${factura.descDireccion}"></td>
+							<td th:text="${factura.codigoPostal}"></td>
+							<td th:text="${factura.tMunicipio.nombreMunicipio}"></td>
+
+						</tr>
 					</tbody>
 				</table>
 

@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -53,22 +56,19 @@ public class TCliente extends AbstractEntity implements Serializable{
     @OneToMany(mappedBy = "tCliente")
     private List<THistorial>tHistorial;
     
-    @OneToMany(mappedBy = "tCliente")
+	@OneToMany(mappedBy = "tCliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<TFactura>tFactura;
     
     @OneToMany(mappedBy = "tCliente")
     private List<TDirecciones>tDirecciones;
     
-    
-    
+
     
 	public TCliente() {
 		this.tDirecciones = new ArrayList<TDirecciones>();
 		this.tPedido = new ArrayList<TPedido>();
+		this.tFactura = new ArrayList<TFactura>();
 	}
-	
-	
-	
 	
 	public Long getId() {
 		return id;
@@ -143,6 +143,19 @@ public class TCliente extends AbstractEntity implements Serializable{
 		this.tPedido = tPedido;
 	}
 	
+
+    public List<TFactura> gettFactura() {
+		return tFactura;
+	}
+
+	public void settFactura(List<TFactura> tFactura) {
+		this.tFactura = tFactura;
+	}
+
+	public void addFactura(TFactura tfacturas) {
+		tFactura.add(tfacturas);
+		
+	}
 	
     
     

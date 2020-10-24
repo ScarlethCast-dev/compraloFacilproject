@@ -1,17 +1,22 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,7 +36,12 @@ public class TFactura extends AbstractEntity implements Serializable{
 	@Column(name = "fecha_factura")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd-MM-yyyy")
-	 private Date fechaFactura;
+	private Date fechaFactura;
+	
+	@PrePersist
+	public void prePersit() {
+		fechaFactura = new Date();
+	}
 	 
 	 @Column(name = "id_cliente")
 	 private Long idCliente;
@@ -39,17 +49,31 @@ public class TFactura extends AbstractEntity implements Serializable{
 	 @Column(name = "id_pedido")
 	 private Long idPedido;
 	 
-	 @ManyToOne
+	 
+
+	 @OneToOne(fetch= FetchType.LAZY, cascade= CascadeType.ALL)
+	 private TPedido tpedido; 
+	 
+	 @ManyToOne(fetch = FetchType.LAZY)
 	 @JoinColumn(name="id_cliente", insertable = false, updatable = false)
 	 private TCliente tCliente;
 	 
-	 @ManyToOne
-	 @JoinColumn(name="id_pedido", insertable = false, updatable = false)
-	 private TPedido tPedido;
+//	 @ManyToOne
+//	 @JoinColumn(name="id_pedido", insertable = false, updatable = false)
+//	 private TPedido tPedido;
 
-	 @OneToMany(mappedBy = "tFactura")
+//	 @OneToMany(mappedBy = "tFactura")
+//	 private List<TDetalleFactura> tDetalleFactura;
+	 
+	 @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 @JoinColumn(name="id_factura")
 	 private List<TDetalleFactura> tDetalleFactura;
 	 
+	
+
+	public TFactura() {
+		this.tDetalleFactura = new ArrayList<TDetalleFactura>();
+	}
 
 	public Long getIdFactura() {
 		return idFactura;
@@ -83,7 +107,29 @@ public class TFactura extends AbstractEntity implements Serializable{
 		this.idPedido = idPedido;
 	}
 	 
-	 
+
+	public List<TDetalleFactura> gettDetalleFactura() {
+		return tDetalleFactura;
+	}
+
+	public void settDetalleFactura(List<TDetalleFactura> tDetalleFactura) {
+		this.tDetalleFactura = tDetalleFactura;
+	}
+	
+	public void addItemAFactura(TDetalleFactura item){ //anadir un item a la factura
+		this.tDetalleFactura.add(item);
+	}
 		
+	public Double calcularTotal(){
+		Double total= 0.0;
+		int size= tDetalleFactura.size();
+		
+		for(int i=0; i<=size; i++){
+			total+= tDetalleFactura.get(i).calcularImporte();
+			
+		}
+		return total;
+		
+	}
 		
 }

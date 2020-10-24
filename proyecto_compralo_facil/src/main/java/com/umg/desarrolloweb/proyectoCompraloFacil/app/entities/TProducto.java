@@ -1,7 +1,6 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -23,7 +22,7 @@ private static final long serialVersionUID = 1L;
     private String nombre;
     private String descripcion;
     private Long cantidad;
-    private BigDecimal precio;
+    private Double precio;
     private String foto;
     
     
@@ -55,10 +54,10 @@ private static final long serialVersionUID = 1L;
 	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
-	public BigDecimal getPrecio() {
+	public Double getPrecio() {
 		return precio;
 	}
-	public void setPrecio(BigDecimal precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 	public String getFoto() {
