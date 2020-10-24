@@ -4,9 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,23 +23,46 @@ public class TDetalleCuenta extends AbstractEntity implements Serializable{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_detalle_pago")
-	private Long idDetallePago;
+	private Long id;
 	
 	private String descripcion;
 	private Long monto;
 	
-	@Column(name = "id_cuenta")
-	private Long idCuenta;
+	//@Column(name = "id_cuenta")
+	//private Long idCuenta;
 	
-	@Column(name = "id_metodo_pago")
-	private Long idMetodoPago;
+	//@Column(name = "id_metodo_pago")
+	//private Long idMetodoPago;
 
-	public Long getIdDetallePago() {
-		return idDetallePago;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private TCuenta tCuenta;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private TMetodoPago tMetodoPago;
+	
+
+	public TMetodoPago gettMetodoPago() {
+		return tMetodoPago;
 	}
 
-	public void setIdDetallePago(Long idDetallePago) {
-		this.idDetallePago = idDetallePago;
+	public void settMetodoPago(TMetodoPago tMetodoPago) {
+		this.tMetodoPago = tMetodoPago;
+	}
+
+	public TCuenta gettCuenta() {
+		return tCuenta;
+	}
+
+	public void settCuenta(TCuenta tCuenta) {
+		this.tCuenta = tCuenta;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getDescripcion() {
@@ -56,6 +81,7 @@ public class TDetalleCuenta extends AbstractEntity implements Serializable{
 		this.monto = monto;
 	}
 
+	/**
 	public Long getIdCuenta() {
 		return idCuenta;
 	}
@@ -71,7 +97,7 @@ public class TDetalleCuenta extends AbstractEntity implements Serializable{
 	public void setIdMetodoPago(Long idMetodoPago) {
 		this.idMetodoPago = idMetodoPago;
 	}
-	
+	**/
 	
 
 	
