@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<meta charset="utf-8"/>
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-tittle"></h4>
+				<form th:action="@{/facturas/form-factura/}" th:object=${factura}
+					method="post">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" th:text="'Cliente'"></label>
+						<input
+							th:value="${factura.tCliente.nombre} + ' ' + ${factura.tCliente.apellido}"
+							class="form-control" disabled='disabled' />
+					</div>
+			
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" th:text="'Fecha factura'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{fechaFactura}" placeholder="DD-MM-YYYY" class="form-control" />
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" th:text="'Descripción'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{descripcion}"class="form-control" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label" th:text="'Observaciones'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{observaciones}"class="form-control" />
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="'Generar'"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

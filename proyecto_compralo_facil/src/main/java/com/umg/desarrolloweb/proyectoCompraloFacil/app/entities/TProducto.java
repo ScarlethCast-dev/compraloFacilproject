@@ -26,7 +26,6 @@ private static final long serialVersionUID = 1L;
     private String foto;
     
     
-    
 	 @OneToMany(mappedBy = "tProducto")
 	 private List<TPedido> tPedido;
     

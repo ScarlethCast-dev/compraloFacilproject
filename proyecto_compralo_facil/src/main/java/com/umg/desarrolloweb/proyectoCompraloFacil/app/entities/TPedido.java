@@ -62,7 +62,10 @@ public class TPedido extends AbstractEntity implements Serializable  {
 	@JoinColumn(name= "id_factura")
 	private List<TFactura>tFactura;
 	
-
+	@ManyToOne(fetch= FetchType.LAZY)
+	@JoinColumn(name= "pedido")
+	private TFactura tfactura; 
+	
 	public TPedido() {
 		this.tDetallePedidos = new ArrayList<TDetallePedido>();
 	}

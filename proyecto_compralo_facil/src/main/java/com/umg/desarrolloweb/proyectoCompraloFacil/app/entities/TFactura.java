@@ -15,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,25 +36,24 @@ public class TFactura extends AbstractEntity implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date fechaFactura;
-	
 	@PrePersist
 	public void prePersit() {
 		fechaFactura = new Date();
 	}
-	 
-	 @Column(name = "id_cliente")
-	 private Long idCliente;
-	 
-	 @Column(name = "id_pedido")
-	 private Long idPedido;
-	 
-	 
+	
+	private String descripcion;
+	private String observaciones;
+	
 
-	 @OneToOne(fetch= FetchType.LAZY, cascade= CascadeType.ALL)
-	 private TPedido tpedido; 
 	 
+//	 @Column(name = "id_cliente")
+//	 private Long idCliente;
+//	 
+//	 @Column(name = "id_pedido")
+//	 private Long idPedido;
+//	  	 
 	 @ManyToOne(fetch = FetchType.LAZY)
-	 @JoinColumn(name="id_cliente", insertable = false, updatable = false)
+	 @JoinColumn(name="cliente", insertable = false, updatable = false)
 	 private TCliente tCliente;
 	 
 //	 @ManyToOne
@@ -64,12 +62,15 @@ public class TFactura extends AbstractEntity implements Serializable{
 
 //	 @OneToMany(mappedBy = "tFactura")
 //	 private List<TDetalleFactura> tDetalleFactura;
-	 
-	 @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	 @JoinColumn(name="id_factura")
-	 private List<TDetalleFactura> tDetalleFactura;
-	 
 	
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="id_factura")
+	private List<TDetalleFactura> tDetalleFactura;
+	 
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_pedido")
+	private TPedido tpedido;
 
 	public TFactura() {
 		this.tDetalleFactura = new ArrayList<TDetalleFactura>();
@@ -90,21 +91,36 @@ public class TFactura extends AbstractEntity implements Serializable{
 	public void setFechaFactura(Date fechaFactura) {
 		this.fechaFactura = fechaFactura;
 	}
-
-	public Long getIdCliente() {
-		return idCliente;
+	 
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public Long getIdPedido() {
-		return idPedido;
+	public String getObservaciones() {
+		return observaciones;
 	}
 
-	public void setIdPedido(Long idPedido) {
-		this.idPedido = idPedido;
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+//	 public TPedido getTpedido() {
+//		return tpedido;
+//	}
+//
+//	public void setTpedido(TPedido tpedido) {
+//		this.tpedido = tpedido;
+//	}
+
+	public TCliente gettCliente() {
+		return tCliente;
+	}
+
+	public void settCliente(TCliente tCliente) {
+		this.tCliente = tCliente;
 	}
 	 
 
