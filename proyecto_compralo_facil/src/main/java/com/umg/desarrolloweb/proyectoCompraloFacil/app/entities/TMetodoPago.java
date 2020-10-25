@@ -1,12 +1,14 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +24,11 @@ public class TMetodoPago extends AbstractEntity implements Serializable {
     private String descripcion;
     
     
+    @OneToMany(mappedBy = "tMetodoPago")
+    private List<TDetalleCuenta> tDetalleCuenta;
+    
+    
+    
 	public Long getId() {
 		return id;
 	}
@@ -34,6 +41,14 @@ public class TMetodoPago extends AbstractEntity implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	public List<TDetalleCuenta> gettDetalleCuenta() {
+		return tDetalleCuenta;
+	}
+	public void settDetalleCuenta(List<TDetalleCuenta> tDetalleCuenta) {
+		this.tDetalleCuenta = tDetalleCuenta;
+	}
+	
+	
     
 	
 }

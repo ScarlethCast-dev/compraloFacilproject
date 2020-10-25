@@ -24,7 +24,8 @@ public class TEstadoCuenta extends AbstractEntity implements Serializable {
 	@Column(name = "id_estado_cuenta")
 	private Long id;
 
-	private String direccion;
+	private String descripcion;
+	
 	
 	@OneToMany(mappedBy = "tEstadoCuenta")
     private List<TCuenta> tCuenta;
@@ -37,12 +38,14 @@ public class TEstadoCuenta extends AbstractEntity implements Serializable {
 		this.id = id;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
+
+
 
 }

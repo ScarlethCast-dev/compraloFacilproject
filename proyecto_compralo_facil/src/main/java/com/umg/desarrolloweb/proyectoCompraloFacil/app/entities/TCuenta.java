@@ -2,14 +2,17 @@ package com.umg.desarrolloweb.proyectoCompraloFacil.app.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +27,7 @@ public class TCuenta extends AbstractEntity implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_cuenta")
-	private Long idCuenta;
+	private Long id;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd-MM-yyyy")
@@ -36,20 +39,55 @@ public class TCuenta extends AbstractEntity implements Serializable {
 	@Column(name = "id_estado_cuenta")
 	private Long idEstadoCuenta;
 	
-	@ManyToOne
-	@JoinColumn(name="id_pedido", insertable = false, updatable = false)
+	//@ManyToOne
+	//@JoinColumn(name="id_pedido", insertable = false, updatable = false)
+	//private TPedido tPedido;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	private TPedido tPedido;
 	
-	@ManyToOne
-	@JoinColumn(name="id_estado_cuenta", insertable = false, updatable = false)
-	private TEstadoCuenta tEstadoCuenta;
+//	@ManyToOne
+//	@JoinColumn(name="id_estado_cuenta", insertable = false, updatable = false)
+//	private TEstadoCuenta tEstadoCuenta;
 	
-	public Long getIdCuenta() {
-		return idCuenta;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private TEstadoCuenta tEstadoCuenta;
+
+	@OneToMany(mappedBy = "tCuenta")
+    private List<TDetalleCuenta> tDetalleCuenta;
+	
+	
+
+	public List<TDetalleCuenta> gettDetalleCuenta() {
+		return tDetalleCuenta;
 	}
 
-	public void setIdCuenta(Long idCuenta) {
-		this.idCuenta = idCuenta;
+	public void settDetalleCuenta(List<TDetalleCuenta> tDetalleCuenta) {
+		this.tDetalleCuenta = tDetalleCuenta;
+	}
+
+	public TPedido gettPedido() {
+		return tPedido;
+	}
+
+	public void settPedido(TPedido tPedido) {
+		this.tPedido = tPedido;
+	}
+
+	public TEstadoCuenta gettEstadoCuenta() {
+		return tEstadoCuenta;
+	}
+
+	public void settEstadoCuenta(TEstadoCuenta tEstadoCuenta) {
+		this.tEstadoCuenta = tEstadoCuenta;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Date getFecha() {
