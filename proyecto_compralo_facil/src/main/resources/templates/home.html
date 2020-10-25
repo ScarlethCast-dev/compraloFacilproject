@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<meta charset="utf-8" />
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+	
+
+
+<!-- 			<label for="basic-url">Your vanity URL</label> -->
+			<div class="input-group mb-3" style="background: Orange" >
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon3" style="font-size:medium;">Cotizar</span>
+				</div>
+				<input type="text" class="form-control" id="basic-url"
+					aria-describedby="basic-addon3">
+			</div>
+			
+			<!-- 		INICIA Carrousel del imagenes  -->
+			<div id="carouselExampleSlidesOnly" class="carousel slide" 
+ 				data-ride="carousel" data-interval="1000"> 
+				<div class="carousel-inner"> 
+				<div class="carousel-item active"> 
+						<img src="imagenes/alexa.jpg" class="d-block w-100" 
+							alt="Alexa Amazon">
+					</div> -->
+					<div class="carousel-item"> 
+ 						<img src="imagenes/img1.jpg" class="d-block w-100" alt="Amazon"> 
+					</div> -->
+					<div class="carousel-item"> 
+						<img src="..." class="d-block w-100" alt="...">
+ 					</div> 
+ 				</div> 
+ 			</div> 
+
+
+			<!-- 		TERMINA Carrousel del imagenes  -->
+
+
+
+
+		</div>
+
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
