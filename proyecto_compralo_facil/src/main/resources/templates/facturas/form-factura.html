@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <meta charset="utf-8"/>
+<link rel="stylesheet" th:href="@{/css/clientes.css}" />
 <head th:replace="layout/layout :: head">
 </head>
 <body>
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container py-4">
 		<div class="card">
-			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-header" th:text="${titulo}"  style="text-align: center; font-family: cursive;"></div>
 			<div class="card-body">
 
 				<h4 class="card-tittle"></h4>
