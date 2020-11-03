@@ -30,13 +30,33 @@ public class CarritoController {
 	
 		TDetallePedido det = new TDetallePedido();
 		
-		det.setIdDetallePedido(tDetallePedido.getIdDetallePedido());
-		det.setLinkProducto(tDetallePedido.getLinkProducto());
-		det.setDetalleProducto(tDetallePedido.getDetalleProducto());
-		det.setPrecio(tDetallePedido.getPrecio());
-		det.setCantidad(tDetallePedido.getCantidad());
+		boolean dado=true; 
+		Long cantidadSum;
+		for (int i = 0; i < lista.size(); i++) {
+			if (Objects.equals(lista.get(i).getIdDetallePedido(), tDetallePedido.getIdDetallePedido())) {
+				cantidadSum=lista.get(i).getCantidad() + 1;
+				det.setIdDetallePedido(lista.get(i).getIdDetallePedido());
+				det.setLinkProducto(lista.get(i).getLinkProducto());
+				det.setDetalleProducto(lista.get(i).getDetalleProducto());
+				det.setPrecio(lista.get(i).getPrecio());
+				det.setCantidad(cantidadSum);
+				
+				this.lista.set(i, det);
+				dado=false;
+			}
+		}
 		
-		this.lista.add(det);
+		if (dado==true) {
+			det.setIdDetallePedido(tDetallePedido.getIdDetallePedido());
+			det.setLinkProducto(tDetallePedido.getLinkProducto());
+			det.setDetalleProducto(tDetallePedido.getDetalleProducto());
+			det.setPrecio(tDetallePedido.getPrecio());
+			det.setCantidad(tDetallePedido.getCantidad());
+			
+			this.lista.add(det);
+			
+		}
+		
 
 		return "redirect:/carrito";	
 	}
@@ -70,7 +90,7 @@ public class CarritoController {
 		for (int i = 0; i < lista.size(); i++) {
 			if(Objects.equals(lista.get(i).getIdDetallePedido(), id)) {
 				cantidadSum=lista.get(i).getCantidad() + 1;
-				det.setIdDetallePedido(id);
+				det.setIdDetallePedido(lista.get(i).getIdDetallePedido());
 				det.setLinkProducto(lista.get(i).getLinkProducto());
 				det.setDetalleProducto(lista.get(i).getDetalleProducto());
 				det.setPrecio(lista.get(i).getPrecio());
@@ -91,7 +111,7 @@ public class CarritoController {
 			if(Objects.equals(lista.get(i).getIdDetallePedido(), id)) {
 				
 				cantidadSum=lista.get(i).getCantidad() - 1;
-				det.setIdDetallePedido(id);
+				det.setIdDetallePedido(lista.get(i).getIdDetallePedido());
 				det.setLinkProducto(lista.get(i).getLinkProducto());
 				det.setDetalleProducto(lista.get(i).getDetalleProducto());
 				det.setPrecio(lista.get(i).getPrecio());

@@ -35,13 +35,13 @@
 							<td th:text="${det.linkProducto}"></td>
 							<td th:text="${det.detalleProducto}"></td>
 							<td th:text="${det.precio}"></td>
-							<td><a class="btn btn-secondary btn-xs" th:href="@{/cambiar-resta/} + ${det.idDetallePedido}" th:text="'-'"></a></td>
+							<td><a class="btn btn-secondary btn-xs" th:href="@{/cambiar-resta/} + ${det.linkProducto}" th:text="'-'"></a></td>
 							<td th:text="${det.cantidad}"></td>
-							<td><a class="btn btn-secondary btn-xs" th:href="@{/cambiar-suma/} + ${det.idDetallePedido}" th:text="'+'"></a></td>	
+							<td><a class="btn btn-secondary btn-xs" th:href="@{/cambiar-suma/} + ${det.linkProducto}" th:text="'+'"></a></td>	
 							<td th:text="${det.precio * det.cantidad}"></td>
 							<td class="text-center"><a
 								class="btn btn-outline-danger btn-xs"
-								th:href="@{/eliminar-producto-carrito/} + ${det.idDetallePedido}"
+								th:href="@{/eliminar-producto-carrito/} + ${det.linkProducto}"
 								onclick="return confirm('Desea eliminar Producto');">Eliminar</a></td>	
 						</tr>
 					</tbody>
