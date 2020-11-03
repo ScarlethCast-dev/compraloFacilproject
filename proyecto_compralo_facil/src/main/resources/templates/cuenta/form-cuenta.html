@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <meta charset="utf-8"/>
+<link rel="stylesheet" th:href="@{/css/clientes.css}" />
 <head th:replace="layout/layout :: head">
 </head>
 <body>
@@ -8,10 +9,10 @@
 	<div class="container py-4">
 		<h1
 			class="text-secundary border border-primary border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
+			th:text="${titulo}" style="text-align: center; font-family: cursive;"></h1>
 	</div>
 	<div class="container">
-		<div class="card bg-dark text-white">
+		<div id="ingresarDatos" class="text-black  rounded">
 			
 			<div class="card-body">
 				<form th:action="@{/nuevo-cuenta}" th:object="${cuentas}"
@@ -21,7 +22,7 @@
 						<label class="col-sm-2 col-form-label">Fecha</label>
 						<div class="col-sm-6">
 							<input type="text" th:field="*{fecha}" class="form-control"
-								required placeholder="fecha" />
+								placeholder="DD-MM-YYYY" />
 						</div>
 					</div>
 
@@ -29,7 +30,7 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Pedido</label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{tPedido.id}" class="form-control" />
+							<input type="text" th:field="*{tPedido.id}" class="form-control" placeholder="Pedido" />
 						</div>
 					</div>
 					
@@ -37,7 +38,7 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Estado Cuenta</label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{tEstadoCuenta.id}" class="form-control" />
+							<input type="text" th:field="*{tEstadoCuenta.id}" class="form-control" placeholder="Estado Cuenta" />
 						</div>
 					</div>
 
@@ -47,7 +48,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-6">
-							<input type="submit" value="Guardar" class="btn btn-secondary" />
+							<input id ="boton" type="submit" value="Guardar" class="btn btn-secondary" />
 						</div>
 					</div>
 
