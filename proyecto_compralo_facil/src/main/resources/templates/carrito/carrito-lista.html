@@ -16,32 +16,33 @@
 					<a th:href="@{/form}" class="btn btn-outline-primary btn-xs">Seguir
 						comprando</a>
 				</h4>
-				<table class="table table-striped ">
+				<table class="table table-stripped">
 					<thead class="bg-dark text-white text-center">
 						<tr>
 							<td>ID</td>
 							<td>LINK</td>
 							<td>DETALLE PRODUCTO</td>
 							<td>PRECIO</td>
-							<td>CANTIDAD</td>
+							<td colspan="3">CANTIDAD</td>
 							<td>SUBTOTAL</td>
 							<td>ELIMINAR</td>
 							
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="text-center">
 						<tr th:each="det : ${tDetallePedido}">
 							<td th:text="${det.idDetallePedido}"></td>
 							<td th:text="${det.linkProducto}"></td>
 							<td th:text="${det.detalleProducto}"></td>
 							<td th:text="${det.precio}"></td>
+							<td><a class="btn btn-secondary btn-xs" th:href="@{/cambiar-resta/} + ${det.idDetallePedido}" th:text="'-'"></a></td>
 							<td th:text="${det.cantidad}"></td>
+							<td><a class="btn btn-secondary btn-xs" th:href="@{/cambiar-suma/} + ${det.idDetallePedido}" th:text="'+'"></a></td>	
 							<td th:text="${det.precio * det.cantidad}"></td>
 							<td class="text-center"><a
 								class="btn btn-outline-danger btn-xs"
-								th:href="@{/eliminar-producto/} + ${det.idDetallePedido}"
-								onclick="return confirm('Desea eliminar Producto');">Eliminar</a></td>
-							<td></td>	
+								th:href="@{/eliminar-producto-carrito/} + ${det.idDetallePedido}"
+								onclick="return confirm('Desea eliminar Producto');">Eliminar</a></td>	
 						</tr>
 					</tbody>
 				</table>
