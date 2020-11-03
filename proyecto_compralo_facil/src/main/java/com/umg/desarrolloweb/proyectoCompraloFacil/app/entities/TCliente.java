@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 @Entity
 @Table(name = "t_clientes")
 public class TCliente extends AbstractEntity implements Serializable{
@@ -69,7 +70,7 @@ public class TCliente extends AbstractEntity implements Serializable{
 		this.tPedido = new ArrayList<TPedido>();
 		this.tFactura = new ArrayList<TFactura>();
 	}
-	
+
 	public Long getId() {
 		return id;
 	}

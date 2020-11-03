@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,8 +21,6 @@ import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.ClienteRepos
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.util.PageRender;
 
 
-
-
 @Controller
 public class ClienteController {
 	
@@ -32,7 +29,8 @@ public class ClienteController {
 	private ClienteRepository clienteRepository;
 	
 
-	@RequestMapping(value = "/listar-clientes", method = RequestMethod.GET)
+	
+	@RequestMapping(value = {"/listar-clientes","/listar-clientes{param}"}, method = RequestMethod.GET)
 	public String listarClientes(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
 		Pageable pageRequest = PageRequest.of(page, 4);
@@ -43,8 +41,9 @@ public class ClienteController {
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", tclientes);
 		model.addAttribute("page", pageRender);
-		return "clientes";
+		return "clientes/clientes";
 	}
+
 	
 	@RequestMapping(value = "/detalle-cliente/{id}", method = RequestMethod.GET)
 	public String detalleCliente(@PathVariable(value = "id") Long id, Model model) {
@@ -56,7 +55,7 @@ public class ClienteController {
 
 		model.addAttribute("titulo", "Detalle Cliente: " + tcliente.getNombre());
 		model.addAttribute("cliente", tcliente);
-		return "detalle-cliente-form";
+		return "clientes/detalle-cliente-form";
 	}
 	
 	
@@ -65,7 +64,7 @@ public class ClienteController {
 		TCliente tcliente = new TCliente();
 		model.addAttribute("titulo", "Nuevo Cliente");
 		model.addAttribute("cliente", tcliente);
-		return "form-cliente";
+		return "clientes/form-cliente";
 	}
 	
 	@RequestMapping(value = "/nuevo-cliente", method = RequestMethod.POST)
@@ -114,7 +113,7 @@ public class ClienteController {
 		}
 		model.addAttribute("titulo", "Editar Cliente");
 		model.addAttribute("cliente", tcliente);
-		return "form-cliente";
+		return "clientes/form-cliente";
 	}
 	
 	@RequestMapping(value = "/eliminar-cliente/{id}", method = RequestMethod.GET)

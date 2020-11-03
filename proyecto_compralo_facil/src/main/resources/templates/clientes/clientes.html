@@ -6,17 +6,24 @@
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container py-4">
 		<div class="card">
-			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-header" th:text="${titulo}" style="font-style: oblique;font-size: x-large; text-align: center; font-weight: bold;"></div>
 			<div class="card-body">
+			
+			<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Buscar Cliente</label>
+						<label for="Buscar Cliente" class="col-sm-2 col-form-label"></label>
+						<div class="col-sm-6">
+							<input type="text" name="buscar_cliente" id="buscar_cliente" class="form-control" />
+						</div>
+					</div>
 
 				<h4 class="card-tittle">
-
 					<a th:href="@{/nuevo-cliente}"
-						class="btn btn-outline-primary btn-xs">Agregar Cliente</a>
+						class="btn btn-outline-primary btn-xs text-white" style="background-color: #0A1B2A; border-color: #0A1B2A;">Agregar Cliente</a>
 				</h4>
-				<nav th:replace="paginator-nav :: paginator"></nav>
+				<nav th:replace="paginator-nav :: paginator " ></nav>
 				<table class="table table-striped " th:if="${!clientes.isEmpty()}">
-					<thead class="bg-dark text-white text-center">
+					<thead class="text-white text-center" style="background-color: #0A1B2A;">
 						<tr>
 							<td>Id</td>
 							<td>Nombre</td>
@@ -26,6 +33,7 @@
 							<td>Nit</td>
 							<td>Fecha Nacimiento</td>
 							<td>Correo</td>
+							<td>Detalle</td>
 							<td>Editar</td>
 							<td>Eliminar</td>
 						</tr>
@@ -33,8 +41,7 @@
 					<tbody>
 						<tr th:each="cliente: ${clientes}"
 							th:style="${cliente.dpi == null} ? 'background-color: red'">
-							<td><a class="btn btn-primary btn-xs"
-								th:href="@{detalle-cliente/} + ${cliente.id}" th:text="${cliente.id}"></a></td>
+							<td th:href="${cliente.id}" th:text="${cliente.id}" style="font-size: medium; font-weight: bold; font-family: fantasy;"></td>
 							<td th:text="${cliente.nombre}"></td>
 							<td th:text="${cliente.apellido}"></td>
 							<td th:text="${cliente.dpi}"></td>
@@ -43,10 +50,13 @@
 							<td th:text="${cliente.fechaNacimiento}"></td>
 							<td th:text="${cliente.correo}"></td>
 							<td class="text-center"><a
-								class="btn btn-outline-success btn-xs"
+								class="btn btn btn-warning btn-xs"
+								th:href="@{detalle-cliente/} + ${cliente.id}" style="color:white; background-color: #0B4C5F; border-color:#0B4C5F; ">Ver detalle</a></td>
+							<td class="text-center"><a
+								class="btn btn-success btn-xs"
 								th:href="@{/editar-cliente/} + ${cliente.id}">Editar</a></td>
 							<td class="text-center" ><a
-								class="btn btn-outline-danger btn-xs"
+								class="btn btn-danger btn-xs"  
 								th:href="@{/eliminar-cliente/} + ${cliente.id}"
 								onclick="return confirm('Desea eliminar el Cliente?');">Eliminar</a></td>
 						</tr>
@@ -57,5 +67,6 @@
 	</div>
 
 	<footer th:replace="layout/layout :: footer"></footer>
+	<script  th:replace="clientes/js/autocomplete-clientes :: javascript"></script>
 </body>
 </html>
