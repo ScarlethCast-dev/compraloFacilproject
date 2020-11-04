@@ -6,6 +6,9 @@
 <body>
 	<header th:replace="layout/layout :: header"></header>
 
+
+	<h1 class="page-header text-center">Carrito de Compras</h1>
+
 	<div class="container py-4">
 		<div class="card">
 			<div class="card-header" th:text="${titulo}"></div>
@@ -16,63 +19,68 @@
 					<a th:href="@{/form}" class="btn btn-outline-primary btn-xs">Seguir
 						comprando</a>
 				</h4>
-				<table class="table table-stripped">
-					<thead class="bg-dark text-white text-center">
+				<table class="table table-over">
+					<thead class="text-center">
 						<tr>
-							<td>ID</td>
-							<td>LINK</td>
-							<td>DETALLE PRODUCTO</td>
-							<td>PRECIO</td>
-							<td colspan="3">CANTIDAD</td>
-							<td>SUBTOTAL</td>
-							<td>ELIMINAR</td>
-							
-						</tr>
-					</thead>
-					<tbody class="text-center">
-						<tr th:each="det : ${tDetallePedido}">
-							<td th:text="${det.idDetallePedido}"></td>
-							<td th:text="${det.linkProducto}"></td>
-							<td th:text="${det.detalleProducto}"></td>
-							<td th:text="${det.precio}"></td>
-							<td><a class="btn btn-secondary btn-xs" th:href="@{/cambiar-resta/} + ${det.linkProducto}" th:text="'-'"></a></td>
-							<td th:text="${det.cantidad}"></td>
-							<td><a class="btn btn-secondary btn-xs" th:href="@{/cambiar-suma/} + ${det.linkProducto}" th:text="'+'"></a></td>	
-							<td th:text="${det.precio * det.cantidad}"></td>
-							<td class="text-center"><a
-								class="btn btn-outline-danger btn-xs"
-								th:href="@{/eliminar-producto-carrito/} + ${det.linkProducto}"
-								onclick="return confirm('Desea eliminar Producto');">Eliminar</a></td>	
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+							<th scope="col">CODIGO</th>
+							<th scope="col">PRODUCTO</th>
+							<th scope="col">DETALLE PRODUCTO</th>
+							<th scope="col">PRECIO</th>
+							<th scope="col" colspan="3">CANTIDAD</th>
+							<th scope="col">SUBTOTAL</th>
+							<th scope="col">ELIMINAR</th>
 
-	<div class="container py-4">
-		<div class="card">
-			<div class="card-header" th:text="TOTALES"></div>
-			<div class="card-body">
-
-				<h4 class="card-tittle"></h4>
-				<table class="table table-striped ">
-					<thead class="bg-dark text-white text-center">
-						<tr>
-						</tr>
-						<tr>
 						</tr>
 					</thead>
 					<tbody>
-						<tr><td th:text="TOTAL"></td>
-							<td th:text="${total}"></td>
+						<tr th:each="det : ${tDetallePedido}">
+							<td scope="row" th:text="${det.idDetallePedido}"></td>
+							<td><img class="img-thumbnail rounded float-left"
+								src="https://cdn.shopify.com/s/files/1/0101/2522/products/MXM92.jpg?v=1586985638"
+								width="100" height="100" th:alt="${det.linkProducto}" /></td>
+							<td th:text="${det.detalleProducto}"></td>
+							<td th:text="'Q ' + ${det.precio}"></td>
+							<td><a class="btn btn-secondary btn-xs"
+								th:href="@{/cambiar-resta/} + ${det.idDetallePedido}"
+								th:text="'-'"></a></td>
+							<td th:text="${det.cantidad}"></td>
+							<td><a class="btn btn-secondary btn-xs"
+								th:href="@{/cambiar-suma/} + ${det.idDetallePedido}"
+								th:text="'+'"></a></td>
+							<td th:text="'Q ' + ${det.precio * det.cantidad}"></td>
+							<td><a class="btn btn-outline-danger btn-xs"
+								th:href="@{/eliminar-producto-carrito/} + ${det.idDetallePedido}"
+								onclick="return confirm('Desea eliminar Producto');">Eliminar</a></td>
 						</tr>
 					</tbody>
 				</table>
-				<button >PAGAR</button>
+			</div>
+			<div class="col-sm-4 col-xs-12 card-body">
+				<div class="total-block-wrapper">
+					<table class="table">
+						<thead>
+							<tr>
+							</tr>
+							<tr>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="row" th:text="TOTAL"></td>
+								<td  th:text="'Q ' + ${total}"></td>
+							</tr>
+						</tbody>
+					</table>
+					<a th:href="@{/carrito-pago}" class="btn btn-outline-success btn-xs">Pagar</a>
+					<hr/>
+				</div>
 			</div>
 		</div>
+
+
+
 	</div>
+
 
 
 
