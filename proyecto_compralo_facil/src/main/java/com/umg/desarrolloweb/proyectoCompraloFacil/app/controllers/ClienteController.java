@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,7 +24,7 @@ import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TCliente;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.ClienteRepository;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.util.PageRender;
 
-import javassist.expr.NewArray;
+
 
 
 @Controller
