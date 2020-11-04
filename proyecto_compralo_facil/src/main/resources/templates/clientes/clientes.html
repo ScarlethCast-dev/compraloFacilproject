@@ -70,11 +70,14 @@
 					</tbody>
 				</table>
 				<a class="btn btn-danger btn-xs float-right" th:href="@{'/listar-clientes/'(format=pdf)}">PDF</a>
+				
+							<a class="btn btn-success btn-xs float-right" th:href="@{'/listar-clientes/'(format=xlsx)}">EXCEL</a>
 			</div>
 		</div>
 	</div>
 
 
 	<script th:replace="clientes/js/autocomplete-clientes :: javascript"></script>
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>
