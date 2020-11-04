@@ -1,15 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:replace="layout/layout :: head">
+<meta charset="UTF-8" />
 </head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/mapa.css}">
 <body>
 	<header th:replace="layout/layout :: header"></header>
-	<div class="container py-4">
-		
+	<br />
 
-			
+	<h1 align="center" style="font-family: cursive; font-size: 250%;">
+		Contáctanos</h1>
+	<hr />
+	<br />
+	<div class="row" align="center">
+	<div class="col-6" align="center">
+		<h1  style="color: blue; font-style: italic;">Encuéntranos aquí</h1>
+	</div>
+		<div id="map" class="col-6 " style="margin: 70px"></div>
+
+		<div class="col-3">
+			<div class="form-group row">
+				<div class="col-sm-12">
+					<input type="text" class="form-control" required
+						placeholder="Nombres y apellidos" style="background: #BDBDBD; text-decoration: underline;"/> <br /> <br />
+
+					<div class="form-group row">
+						<div class="col-sm-12">
+							<input type="text" class="form-control" required
+								placeholder="Email" style="background: #BDBDBD;text-decoration: underline; "/> <br /> <br />
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<input type="text" class="form-control" required 
+										placeholder="Teléfono"  style="background: #BDBDBD;text-decoration: underline; "/> <br /> <br />
+
+									<div class="form-group row">
+										<div class="col-sm-12">
+											<input type="text" class="form-control" required
+												placeholder="Ciudad" style="background: #BDBDBD; text-decoration: underline;"/> <br /> <br />
+
+											<div class="form-group row">
+												<div class="col-sm-12">
+													<label class="col-sm-2 col-form-label" align="left">Mensaje</label>
+													<input type="text" class="form-control" required
+														placeholder="Escribe aqui" style="background: #BDBDBD; text-decoration: underline; "/> <br /> <br />
+													<div class="col-sm-6">
+														<input  type="submit" value="Enviar" style="background:#FF8000;"
+															class="btn btn-secondary" />
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			<br />
 
-	<footer th:replace="layout/layout :: footer" style="position: fixed;"></footer>
+		</div>
+
+		<script src="js/script.js"></script>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+
+
+
+		<footer th:replace="layout/layout :: footer" style="position: fixed;"></footer>
 </body>
 </html>
