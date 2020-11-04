@@ -6,20 +6,23 @@
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container py-4">
 		<div class="card">
-			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-header" th:text="${titulo}" style="font-style: oblique; font-size: x-large; text-align: center; font-weight: bold;"></div>
 			<div class="card-body">
 
 				<h4 class="card-tittle">
 
 					<a th:href="@{/nuevo-metodopago}"
-						class="btn btn-outline-primary btn-xs">Agregar Metodo de pago</a>
+						class="btn btn-outline-primary btn-xs text-white"
+						style="background-color: #0A1B2A; border-color: #0A1B2A;">Agregar Metodo de pago</a>
 				</h4>
 				<nav th:replace="paginator-nav :: paginator"></nav>
 				<table class="table table-striped " th:if="${!metodopagos.isEmpty()}">
-					<thead class="bg-dark text-white text-center">
+					<thead class="text-white text-center"
+						style="background-color:  #0A1B2A;">
 						<tr>
 							<td>Id</td>
 							<td>Descripcion</td>
+							<td>Detalle</td>
 							<td>Editar</td>
 							<td>Eliminar</td>
 						</tr>
@@ -27,14 +30,19 @@
 					<tbody>
 						<tr th:each="metodopago: ${metodopagos}"
 							th:style="${metodopago.descripcion== null} ? 'background-color: red'">
-							<td><a class="btn btn-primary btn-xs"
-								th:href="@{detalle-metodopago/} + ${metodopago.id}" th:text="${metodopago.id}"></a></td>
+						<td th:href="${metodopago.id}" th:text="${metodopago.id}"
+								style="font-size: medium; font-weight: bold; font-family: fantasy;"></td>
 							<td th:text="${metodopago.descripcion}"></td>
 							<td class="text-center"><a
-								class="btn btn-outline-success btn-xs"
+								class="btn btn btn-warning btn-xs"
+								th:href="@{/detalle-metodopago/} + ${metodopago.id}"
+								style="color: white; background-color: #0B4C5F; border-color: #0B4C5F;">Ver
+									detalle</a></td>
+							<td class="text-center"><a
+								class="btn btn-success btn-xs"
 								th:href="@{/editar-metodopago/} + ${metodopago.id}">Editar</a></td>
 							<td class="text-center" ><a
-								class="btn btn-outline-danger btn-xs"
+								class="btn btn-danger btn-xs"
 								th:href="@{/eliminar-metodopago/} + ${metodopago.id}"
 								onclick="return confirm('Desea eliminar el Metodo de pago?');">Eliminar</a></td>
 						</tr>
