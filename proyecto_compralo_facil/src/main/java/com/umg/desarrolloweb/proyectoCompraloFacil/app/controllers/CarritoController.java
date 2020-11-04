@@ -83,6 +83,18 @@ public class CarritoController {
 		
 	}
 	
+	@GetMapping("/carrito-pago")
+	public String pago(Model model) {
+		total();
+		
+		model.addAttribute("titulo", "Formulario de Pago");
+		model.addAttribute("total", total);
+		model.addAttribute("lista", lista);
+
+		return "carrito/carrito-pago";
+		
+	}
+	
 	@GetMapping(value = "/cambiar-suma/{id}") 
 	public String sumar(@PathVariable(value = "id") Long id){
 		TDetallePedido det = new TDetallePedido();
