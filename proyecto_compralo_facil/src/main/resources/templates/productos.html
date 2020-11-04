@@ -6,23 +6,25 @@
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container py-4">
 		<div class="card">
-			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-header" th:text="${titulo}" style="font-style: oblique; font-size: x-large; text-align: center; font-weight: bold;"></div>
 			<div class="card-body">
 
 				<h4 class="card-tittle">
 
 					<a th:href="@{/nuevo-producto}"
-						class="btn btn-outline-primary btn-xs">Agregar Producto</a>
+						class="btn btn-outline-primary btn-xs text-white" style="background-color: #0A1B2A; border-color: #0A1B2A;">Agregar Producto</a>
 				</h4>
 				<nav th:replace="paginator-nav :: paginator"></nav>
 				<table class="table table-striped " th:if="${!productos.isEmpty()}">
-					<thead class="bg-dark text-white text-center">
+					<thead class="text-white text-center"
+						style="background-color: #0A1B2A;">
 						<tr>
 							<td>Id</td>
 							<td>Nombre</td>
 							<td>Descripcion</td>
 							<td>Cantidad</td>
 							<td>Precio</td>
+							<td>Detalle</td>
 							<td>Editar</td>
 							<td>Eliminar</td>
 						</tr>
@@ -30,17 +32,21 @@
 					<tbody>
 						<tr th:each="producto: ${productos}"
 							th:style="${producto.Cantidad == null} ? 'background-color: red'">
-							<td><a class="btn btn-primary btn-xs"
-								th:href="@{detalle-producto/} + ${producto.id}" th:text="${producto.id}"></a></td>
+							<td th:href="${producto.id}" th:text="${producto.id}" style="font-size: medium; font-weight: bold; font-family: fantasy;"></td>
 							<td th:text="${producto.nombre}"></td>
 							<td th:text="${producto.descripcion}"></td>
 							<td th:text="${producto.cantidad}"></td>
 							<td th:text="${producto.precio}"></td>
 							<td class="text-center"><a
-								class="btn btn-outline-success btn-xs"
+								class="btn btn btn-warning btn-xs"
+								th:href="@{detalle-producto/} + ${producto.id}"
+								style="color: white; background-color: #0B4C5F; border-color: #0B4C5F;">Ver
+									detalle</a></td>
+							<td class="text-center"><a
+								class="btn btn-success btn-xs"
 								th:href="@{/editar-producto/} + ${producto.id}">Editar</a></td>
 							<td class="text-center" ><a
-								class="btn btn-outline-danger btn-xs"
+								class="btn btn-danger btn-xs"
 								th:href="@{/eliminar-producto/} + ${producto.id}"
 								onclick="return confirm('Desea eliminar el Producto?');">Eliminar</a></td>
 						</tr>
