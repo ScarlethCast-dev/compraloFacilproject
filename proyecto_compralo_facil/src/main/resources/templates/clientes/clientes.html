@@ -69,11 +69,12 @@
 						</tr>
 					</tbody>
 				</table>
+				<a class="btn btn-danger btn-xs float-right" th:href="@{'/listar-clientes/'(format=pdf)}">PDF</a>
 			</div>
 		</div>
 	</div>
 
-	<footer th:replace="layout/layout :: footer"></footer>
+
 	<script th:replace="clientes/js/autocomplete-clientes :: javascript"></script>
 </body>
 </html>

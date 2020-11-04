@@ -16,7 +16,7 @@ import com.lowagie.text.pdf.PdfWriter;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TCliente;
 
 
-@Component("empleados")
+@Component("clientes/clientes")
 public class ListaClientesPdfView extends AbstractPdfView{
 
 	@Override
@@ -30,10 +30,10 @@ public class ListaClientesPdfView extends AbstractPdfView{
 		PdfPTable tabla = new PdfPTable(1);
 		tabla.setSpacingAfter(20);
 		
-		tabla.addCell(" ----- CLIENTES ----- ");
+		tabla.addCell("                                      ----- CLIENTES -----                                      ");
 		
 		for(int i = 0; i <list.size();i++) {
-			tabla.addCell("---- CLIENTES ----");
+			tabla.addCell("        ---- CLIENTE ----        ");
 			tabla.addCell("NOMBRES: "+list.get(i).getNombre());
 			tabla.addCell("APELLIDOS: "+list.get(i).getApellido());
 			tabla.addCell("DPI: "+list.get(i).getDpi());

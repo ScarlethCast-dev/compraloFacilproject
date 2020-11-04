@@ -15,7 +15,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TCliente;
 
-@Component("ddetalle-cliente-form")
+@Component("clientes/detalle-cliente-form")
 public class ClientePdfView extends AbstractPdfView {
 
 	@Override
@@ -27,7 +27,7 @@ public class ClientePdfView extends AbstractPdfView {
 		PdfPTable tabla =new PdfPTable(1);
 		tabla.setSpacingAfter(20);
 		
-		tabla.addCell("---- CLIENTES ----");
+		tabla.addCell("                                     ---- CLIENTE ----                                     ");
 		tabla.addCell("NOMBRES: "+cliente.getNombre());
 		tabla.addCell("APELLIDOS: "+cliente.getApellido());
 		tabla.addCell("DPI: "+cliente.getDpi());

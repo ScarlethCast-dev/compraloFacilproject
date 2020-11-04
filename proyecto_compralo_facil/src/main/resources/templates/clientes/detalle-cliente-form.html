@@ -5,11 +5,13 @@
 <body>
 
 	<header th:replace="layout/layout :: header"></header>
-
+	
 	<div class="container py-4">
+	
 
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
+			
 			<div class="card-body">
 
 				<ul class="list-group">
@@ -60,12 +62,14 @@
 						</tr>
 					</tbody>
 				</table>
-
+	<a class="btn btn-danger btn-xs float-right" th:href="@{'/detalle-cliente/' + ${cliente.id}(format=pdf)}">PDF</a>
+	
 			</div>
+		
 		</div>
 	</div>
 
 
-	<footer th:replace="layout/layout :: footer"></footer>
+
 </body>
 </html>
