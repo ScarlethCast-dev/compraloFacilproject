@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +24,8 @@ import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TCliente;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.ClienteRepository;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.util.PageRender;
 
+import javassist.expr.NewArray;
+
 
 @Controller
 public class ClienteController {
@@ -29,7 +35,6 @@ public class ClienteController {
 	private ClienteRepository clienteRepository;
 	
 
-	
 	@RequestMapping(value = {"/listar-clientes","/listar-clientes{param}"}, method = RequestMethod.GET)
 	public String listarClientes(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
@@ -40,11 +45,19 @@ public class ClienteController {
 		PageRender<TCliente> pageRender = new PageRender<TCliente>("/listar-clientes", tclientes);
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", tclientes);
+		model.addAttribute("cliente", new TCliente());
 		model.addAttribute("page", pageRender);
 		return "clientes/clientes";
 	}
 
-	
+	@GetMapping("/clienteNombre")
+	public String buscarPorNombre(@RequestParam String nombre, Model model, @ModelAttribute("cliente")TCliente tcliente) {
+		
+		model.addAttribute("clientesPorNombre", clienteRepository.findByNombre(nombre));
+		
+		return "clientes/clientes";
+	}
+
 	@RequestMapping(value = "/detalle-cliente/{id}", method = RequestMethod.GET)
 	public String detalleCliente(@PathVariable(value = "id") Long id, Model model) {
 
