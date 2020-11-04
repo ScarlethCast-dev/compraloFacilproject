@@ -7,6 +7,7 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
 <link rel="stylesheet" th:href="@{/css/layout.css}" />
+<link rel="stylesheet" th:href="@{/css/divs.css}" /> 
 </head>
 <body>
 
@@ -60,10 +61,10 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav m-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">
+					<li class="nav-item active"><a class="nav-link" th:href="@{/inicio}">
 							Inicio <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item active"><a class="nav-link" href="#">Sobre
+					<li class="nav-item active"><a class="nav-link" th:href="@{/sobreNosotros}">Sobre
 							Nosotros <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item active"><a class="nav-link text-resaltar" href="#">Productos
@@ -72,7 +73,7 @@
 					<li class="nav-item active"><a class="nav-link" href="#">Tiendas
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item active"><a class="nav-link" href="#">Contáctanos
+					<li class="nav-item active"><a class="nav-link" th:href="@{/contacto}">Contáctanos
 							<span class="sr-only">(current)</span>
 					</a></li>
 			</div>

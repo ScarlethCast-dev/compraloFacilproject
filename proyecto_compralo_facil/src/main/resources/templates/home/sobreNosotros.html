@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<link rel="stylesheet" th:href="@{/css/divs.css}" />
+</head>
+<meta charset="utf-8">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4"></div>
+
+	<h1 align="center" style="font-family:cursive; font-size: 250%; "> Sobre Nosotros</h1>
+	<hr/>
+	<br/>
+	<p align="center">
+	<img src="imagenes/logo.jpg" alt="Logo Compralo Facil"  width="200px" height="150px"> </p>
+	<br/>
+	
+	<h2 style="color: orange; margin: 100px; margin-bottom: 1em; margin-top: 1em; font-size: 40px;" >           Visión</h2>
+
+	<div class="caja">
+	<p>
+	En compráloFácil <b> <i>NUESTRA VISIÓN </i></b> es ser la empresa número 1 en Guatemala y Latinoamérica en llevar
+	productos de tiendas reconocidas a nivel mundial que nuestros clientes soliciten superando sus 
+	expectativas de compras online. Donde generamos confianza con cada uno de nuestros clientes, ofreciéndoles
+	un servicio de alto nivel, transparencia, compromiso y seguridad. 
+	</p>
+	
+	</div>
+	
+	<h2 style="color: orange; margin: 100px; margin-bottom: 1em; margin-top: 1em; font-size: 40px; font-family: inherit;">         Misión</h2>
+	<div class="caja">
+	<p>
+	En CompráloFácil <b><i>NUESTRA MISIÓN</i></b>  es brindar a nuestros clientes seguridad, facilidad y rápidez en el
+	momento de efectuar una compra, siendo un proveedor confiable con excelente calidad y un precio altamente
+	competitivo.</p>
+	</div>
+	
+	<h2 style="color: orange;margin: 100px; margin-bottom: 1em; margin-top: 1em; font-size: 40px;">      Valores</h2>
+	<div class="caja">
+	<p>
+	Los valores en los cuales nos <b><i>DESTACAMOS</i></b> en CompráloFácil son: responsabilidad, confianza,integridad, puntualidad
+	y trabajo en equipo. 
+	
+	</p>
+	</div>
+	<br/> <br/> <br/> <br/>
+
+	<footer th:replace="layout/layout :: footer"></footer> 
+</body>
+</html>
