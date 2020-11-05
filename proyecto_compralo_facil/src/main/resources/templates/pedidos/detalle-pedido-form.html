@@ -14,6 +14,12 @@
 					title="Exportar a PDF" target="_blank">
 					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
 				    </a>	
+				    
+				    <a class="nav-link float-right" 
+				    th:href="@{'/detalle-pedido/' + ${pedido.id}(format=xlsx)}" 
+					title="Exportar a EXCEL">
+					<img class="img-responsive center-box" th:src="@{/imagenes/excel.png}" height="auto">						
+				    </a>
 			<div class="card-body">
 
 				<ul class="list-group">

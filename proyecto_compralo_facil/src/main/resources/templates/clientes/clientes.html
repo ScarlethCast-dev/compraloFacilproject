@@ -32,7 +32,7 @@
 				    </a>	
 				    
 				    <a class="nav-link float-right" 
-				    th:href="@{'/listar-clientes/(format=xlsx)}" title="Exportar a EXCEL"  target="_blank">
+				    th:href="@{'/listar-clientes/'(format=xlsx)}" title="Exportar a EXCEL" >
 				    <img class="img-responsive center-box" th:src="@{/imagenes/excel.png}" height="auto">
 				    </a>
 				    
@@ -83,6 +83,7 @@
 						</tr>
 					</tbody>
 				</table>
+				
 			</div>
 		</div>
 	</div>

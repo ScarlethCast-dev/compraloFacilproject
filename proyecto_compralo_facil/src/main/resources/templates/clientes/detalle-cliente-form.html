@@ -11,10 +11,18 @@
 
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
-								<a class="nav-link float-right" th:href="@{'/detalle-cliente/' + ${cliente.id}(format=pdf)}" 
+					<a class="nav-link float-right" th:href="@{'/detalle-cliente/' + ${cliente.id}(format=pdf)}" 
 					title="Exportar a PDF" target="_blank">
 					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
 				    </a>	
+				    
+				    
+				    <a class="nav-link float-right" 
+				    th:href="@{'/detalle-cliente/' + ${cliente.id}(format=xlsx)}" 
+					title="Exportar a EXCEL">
+					<img class="img-responsive center-box" th:src="@{/imagenes/excel.png}" height="auto">						
+				    </a>	
+				    
 			<div class="card-body">
 
 				<ul class="list-group">

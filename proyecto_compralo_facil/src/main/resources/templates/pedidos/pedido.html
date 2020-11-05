@@ -18,6 +18,11 @@
 					title="Exportar a PDF" target="_blank">
 					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
 				    </a>	
+				    
+				    <a class="nav-link float-right" 
+				    th:href="@{'/listar-pedido/'(format=xlsx)}" title="Exportar a EXCEL" >
+				    <img class="img-responsive center-box" th:src="@{/imagenes/excel.png}" height="auto">
+				    </a>
 						
 				</h4>
 				<nav th:replace="paginator-nav :: paginator"></nav>

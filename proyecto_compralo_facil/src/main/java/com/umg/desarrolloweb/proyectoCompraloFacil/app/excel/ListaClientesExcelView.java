@@ -28,6 +28,8 @@ public class ListaClientesExcelView extends AbstractXlsxView{
 		response.setHeader("Content-Disposition", "attachment; filename=\"listado-clientes.xlsx\"");
 		Sheet hoja = workbook.createSheet("clientes");
 		
+		
+		
 		Row filaTitulo = hoja.createRow(0);
 		Cell celda =filaTitulo.createCell(0);
 		celda.setCellValue("LISTADO GENERAL DE CLIENTES");
