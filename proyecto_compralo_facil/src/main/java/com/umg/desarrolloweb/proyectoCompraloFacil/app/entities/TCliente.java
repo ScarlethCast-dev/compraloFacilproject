@@ -36,7 +36,7 @@ public class TCliente extends AbstractEntity implements Serializable{
     private Long id;
     private String nombre;
     private String apellido;
-    private long dpi;
+    private Long dpi;
 
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
@@ -92,12 +92,18 @@ public class TCliente extends AbstractEntity implements Serializable{
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public long getDpi() {
+	public Long getDpi() {
 		return dpi;
 	}
-	public void setDpi(long dpi) {
+
+
+
+	public void setDpi(Long dpi) {
 		this.dpi = dpi;
 	}
+
+
+
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}

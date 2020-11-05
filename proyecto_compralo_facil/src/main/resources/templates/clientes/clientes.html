@@ -25,6 +25,20 @@
 						class="btn btn-outline-primary btn-xs text-white"
 						style="background-color: #0A1B2A; border-color: #0A1B2A;">Agregar
 						Cliente</a>
+						
+					<a class="nav-link float-right" th:href="@{/listar-clientes/(format=pdf)}" 
+					title="Exportar a PDF" target="_blank">
+					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
+				    </a>	
+				    
+				    <a class="nav-link float-right" 
+				    th:href="@{'/listar-clientes/(format=xlsx)}" title="Exportar a EXCEL"  target="_blank">
+				    <img class="img-responsive center-box" th:src="@{/imagenes/excel.png}" height="auto">
+				    </a>
+				    
+
+				 
+				 
 				</h4>
 				<nav th:replace="paginator-nav :: paginator "></nav>
 				<table class="table table-striped " th:if="${!clientes.isEmpty()}">
@@ -69,9 +83,6 @@
 						</tr>
 					</tbody>
 				</table>
-				<a class="btn btn-danger btn-xs float-right" th:href="@{'/listar-clientes/'(format=pdf)}">PDF</a>
-				
-							<a class="btn btn-success btn-xs float-right" th:href="@{'/listar-clientes/'(format=xlsx)}">EXCEL</a>
 			</div>
 		</div>
 	</div>

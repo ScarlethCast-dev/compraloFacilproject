@@ -11,6 +11,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
@@ -40,7 +41,10 @@ public class ListaClientesExcelView extends AbstractXlsxView{
 			celda.setCellValue(columnas[i]);
 		}
 		
-		List<TCliente> listaC = (List<TCliente>) model.get("clientes");
+		
+		@SuppressWarnings("unchecked")
+		Page<TCliente> listaC2 = (Page<TCliente>)model.get("clientes");
+		List<TCliente> listaC = listaC2.getContent();
 		
 		int numFila = 3;
 		for(TCliente cliente : listaC) {
