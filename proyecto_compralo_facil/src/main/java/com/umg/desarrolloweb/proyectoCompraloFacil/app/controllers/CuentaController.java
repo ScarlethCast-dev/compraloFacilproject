@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.EstadoCuenta
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.PedidoRepository;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.util.PageRender;
 
+@Secured("ROLE_ADMIN")
 @Controller
 public class CuentaController {
 	
