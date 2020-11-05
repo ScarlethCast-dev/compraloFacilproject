@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TDetallePedido;
 
+@Secured("ROLE_ADMIN")
 @Controller
-
 public class CarritoController {
 
 	private List<TDetallePedido> lista = new ArrayList<>();
