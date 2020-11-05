@@ -10,6 +10,11 @@
 
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
+			
+					<a class="nav-link float-right" th:href="@{'/detalle-direccion/' + ${direcciones.id}(format=pdf)}" 
+					title="Exportar a PDF" target="_blank">
+					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
+				    </a>	
 			<div class="card-body">
 
 				<ul class="list-group">

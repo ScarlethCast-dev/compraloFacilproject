@@ -25,9 +25,13 @@ public class DireccionPdfView extends AbstractPdfView{
 		PdfPTable tabla =new PdfPTable(1);
 		tabla.setSpacingAfter(20);
 		
+		tabla.addCell("                                     ---- DIRECCION ----                                     ");
+
 		tabla.addCell("DIRECCION: "+direccion.getDescDireccion());
 		tabla.addCell("CODIGO POSTAL: "+direccion.getCodigoPostal());
-		tabla.addCell("CLIENTE: "+direccion.gettCliente().getNombre());
+		tabla.addCell("ID CLIENTE: "+direccion.gettCliente().getId());
+		tabla.addCell("NOMBRE CLIENTE: "+direccion.gettCliente().getNombre());
+		tabla.addCell("APELLIDO CLIENTE: "+direccion.gettCliente().getApellido());
 		tabla.addCell("MUNICIPIO: "+direccion.gettMunicipio().getNombreMunicipio());
 		tabla.addCell("DEPARTAMENTO: "+direccion.gettDepartamento().getNombreDepartamento());
 		

@@ -13,6 +13,12 @@
 
 					<a th:href="@{/nuevo-pedido}"
 						class="btn btn-outline-primary btn-xs">Agregar Pedido</a>
+					
+					<a class="nav-link float-right" th:href="@{/listar-pedido/(format=pdf)}" 
+					title="Exportar a PDF" target="_blank">
+					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
+				    </a>	
+						
 				</h4>
 				<nav th:replace="paginator-nav :: paginator"></nav>
 				<table class="table table-striped " th:if="${!pedido.isEmpty()}">

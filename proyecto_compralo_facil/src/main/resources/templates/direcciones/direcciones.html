@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:replace="layout/layout :: head">
-<link rel="stylesheet" th:href="@{/css/main.css}" />
+
 
 </head>
 <body>
@@ -11,7 +11,7 @@
     <link rel="stylesheet"  th:href="@{bootstrap/css/bootstrap.min.css}">
     <!-- CSS personalizado --> 
 
-      
+      <link rel="stylesheet" th:href="@{/css/main.css}" />
     <!--datables CSS básico-->
     <link rel="stylesheet" type="text/css" th:href="@{datatables/datatables.min.css}"/>
     <!--datables estilo bootstrap 4 CSS-->  
@@ -28,10 +28,10 @@
 	<div class="dt-buttons btn-group">
 	<button class="btn btn-secondary buttons-excel buttons-html5 btn-success" tabindex="0" 
 	aria-controls="example" type="button" title="Exportar a Excel">
-	<span>
+	
 	<i class="fas fa-file-excel">
 	</i>
-	</span>
+	
 	
 	</button>
 	<button class="btn btn-secondary buttons-pdf buttons-html5 btn-danger" tabindex="0" 
@@ -52,6 +52,11 @@
 
 					<a th:href="@{/nuevo-direccion}"
 						class="btn btn-outline-primary btn-xs">Agregar Direecion</a>
+						
+										<a class="nav-link float-right" th:href="@{/listar-direcciones/(format=pdf)}" 
+					title="Exportar a PDF" target="_blank">
+					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
+				    </a>		
 				</h4>
 				<nav th:replace="paginator-nav :: paginator"></nav>
 				<table class="table table-striped " th:if="${!direcciones.isEmpty()}">
@@ -86,7 +91,6 @@
 						</tr>
 					</tbody>
 				</table>
-				<a class="btn btn-danger btn-xs float-right" th:href="@{'/listar-direcciones/'(format=pdf)}">PDF</a>
 			</div>
 		</div>
 	</div>
