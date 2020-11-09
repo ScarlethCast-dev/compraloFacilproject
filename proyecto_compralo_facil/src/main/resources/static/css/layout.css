@@ -3,3 +3,7 @@
 	width: 100%;
 /* 	position: fixed; */
 }
+
+#boton btn btn-outline-primary{
+	background-color: red;
+}

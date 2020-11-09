@@ -90,8 +90,7 @@
 					</a></li>
 				</ul>
 				<ul class="navbar-nav navbar-right">
-					<li sec:authorize="!isAuthenticated()"><a
-						class="btn btn-outline-primary" th:href="@{/login}">Sign In</a></li>
+					<li sec:authorize="!isAuthenticated()"><a <button type="button" class="btn btn-warning" th:href="@{/login}" style="font-weight: bold;">Iniciar Sesión</a></button></li>
 
 					<li sec:authorize="isAuthenticated()" class="dropdown show"><a
 						class="btn btn-outline-primary dropdown-toggle" href="#"

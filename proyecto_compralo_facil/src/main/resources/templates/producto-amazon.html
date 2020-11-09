@@ -11,27 +11,104 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 
-<title>Inicior</title>
 </head>
 <body>
 	<header th:replace="layout/layout :: header"></header>
-
-	<img th:src="${productoAmazon.mainImage.imageUrl}" class="img-fluid"
-		alt="${productoAmazon.mainImage.imageUrl}">
-	<div class="card col-md-4 col-lg-7">
-		<div class="card-header" th:text="${productoAmazon.productTitle}">
+	<br/> <br/>
+	<div class="container">
+		<div class="row">
+		<div class="col-4">
+		<img th:src="${productoAmazon.mainImage.imageUrl}" class="img-fluid"
+	 		alt="${productoAmazon.mainImage.imageUrl}" style="width: 900px; height: 500px;"> 
 		</div>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item"
-				th:text="${productoAmazon.productDescription}"></li>
-			<li class="list-group-item" th:text="${productoAmazon.productRating}">
-			</li>
-			<li class="list-group-item" th:text="${productoAmazon.price}"></li>
-			<li class="list-group-item"
-				th:text="${productoAmazon.precioQuetzales}"></li>
-		</ul>
-		<button type="button" class="btn btn-success">RealizarCompra</button>
+		<br/>
+		<div class="col-6">
+			<div class="card-header" th:text="${productoAmazon.productTitle}" style="font-size: 30px; font-weight: bolder;"> 
+	 		</div> 
+			<ul class="list-group list-group-flush"> 
+	 			<li class="list-group-item" 
+	 				th:text="${productoAmazon.productDescription}"></li> 
+	 			<li class="list-group-item" th:text="${productoAmazon.productRating}"> 
+	 			</li> 
+	 			<li class="list-group-item" 
+	 				th:text="${productoAmazon.precioQuetzales}"></li> 
+	 		</ul> 
+		</div>
+		<div class="col-2">
+
+	
+     	<p>Cantidad: <input class="form-control" type="number" value="0" id="example-number-input"><br/> 
+     	
+     	<p style="font-size: 30px">Precio todo incluido</p>
+     	<p th:text="${productoAmazon.price}" style="font-size: 30px; font-weight: bold;"><p/>
+     	 </p> 
+     	 
+     	<br/>
+		<br/>
+		<button type="button" class="btn btn-success">Añadir al carrito</button>
+		<br/>
+		<br/>
+		<button type="button" class="btn btn-success">Comprar ahora</button>
+		<br/>
+		<br/>
+   		</div>
+   		
+   		<br/> 
+
+
 	</div>
-	<footer th:replace="layout/layout :: footer"></footer>
+
+	 	
+	<!-- 	<div class="card col-md-4 col-lg-7"> -->
+	<!-- 		<div class="card-header" th:text="${productoAmazon.productTitle}"> -->
+	<!-- 		</div> -->
+	<!-- 		<ul class="list-group list-group-flush"> -->
+	<!-- 			<li class="list-group-item" -->
+	<!-- 				th:text="${productoAmazon.productDescription}"></li> -->
+	<!-- 			<li class="list-group-item" th:text="${productoAmazon.productRating}"> -->
+	<!-- 			</li> -->
+	<!-- 			<li class="list-group-item" th:text="${productoAmazon.price}"></li> -->
+	<!-- 			<li class="list-group-item" -->
+	<!-- 				th:text="${productoAmazon.precioQuetzales}"></li> -->
+	<!-- 		</ul> -->
+	<!-- 		<button type="button" class="btn btn-success">RealizarCompra</button> -->
+
+	<!-- 	</div> -->
+	<br />
+	<br />
+	</div>
+	<footer th:fragment="footer" id="footer" class="container-fluid"
+		style="background-color: #0D0D2A !important; color: white !important; font-size: medium;">
+		<div class="container-fluid" style="background-color: #0D0D2A !important;"></div><div class="row" align="center">
+			<div class="col-12 col-lg">
+				<h3>Síguenos en</h3>
+				<p>
+					<img src="imagenes/facebook.png" alt="Logo compralo fácil" width="25" height="25"> <img src="imagenes/instagram.png" alt="Logo compralo fácil" width="25" height="25">
+				</p>
+				<img src="imagenes/gorjeo.png" alt="Logo compralo fácil" width="25" height="25">
+				<p></p>
+			</div>
+			<div class="col-12 col-lg">
+				<h4>Todos los derechos reservados por CompráloFácil Group In
+					2020</h4>
+				<p>
+					<strong>Ubicación</strong> Zona 5, Pradera, Huehuetenango.<br>
+					<strong>Télefono</strong> 22563689<br> <strong>Email</strong>
+					compralofacil@gmail.com
+				</p>
+
+			</div>
+			<div class="col-12 col-lg">
+				<a href="#" style="color: white;">Términos y condiciones</a>
+			</div>
+			<div class="col-12 col-lg">
+				<a href="#" style="color: white;">Privacidad</a>
+			</div>
+
+		</div><script th:src="@{/js/jquery-3.2.1.min.js}"></script><script th:src="@{/js/popper.min.js}"></script><script th:src="@{/js/bootstrap.min.js}"></script><script th:src="@{/js/jquery-ui.min.js}"></script>
+		
+
+	</footer>
+	
 </body>
 </html>
