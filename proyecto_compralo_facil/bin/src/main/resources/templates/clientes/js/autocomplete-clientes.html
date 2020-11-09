@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<script type="text/javascript" th:fragment="javascript">
+		$(document).ready(function(){
+			
+			$("#buscar_cliente").autocomplete({
+				
+				source: function(request, response){
+					$.ajax({
+						url: "/clientes/cargar-clientes/" + request.term,
+						dataType: "json",
+						data: {
+							term: request.term
+						},
+						success: function(data){
+							response($.map(data, function(item){
+								return {
+									value: item.id,
+									label: item.nombre,
+									label: item.apellido,
+									value: item.dpi,
+									label: item.fechaNacimiento,
+									label: item.telefono,
+									label: item.nit,
+									label: item.correo,
+
+								};
+							}));
+						},
+					});
+					
+				},
+				select: function(event, ui){
+					$("#buscar_cliente").val(ui.item.label);
+					
+					return false;
+				}
+			});
+		}
+				
+		);
+	</script>
+</body>
+</html>

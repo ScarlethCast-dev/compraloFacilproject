@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			
+					<a class="nav-link float-right" th:href="@{'/detalle-direccion/' + ${direcciones.id}(format=pdf)}" 
+					title="Exportar a PDF" target="_blank">
+					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
+				    </a>	
+			<div class="card-body">
+
+				<ul class="list-group">
+					<li class="list-group-item active" th:text="${direcciones.id}"></li>
+					<li class="list-group-item" th:text="${direcciones.descDireccion}"></li>
+					<li class="list-group-item" th:text="${direcciones.codigoPostal}"></li>
+					<li class="list-group-item" th:text="${direcciones.tCliente.nombre}"></li>
+					<li class="list-group-item" th:text="${direcciones.tMunicipio.nombreMunicipio}"></li>
+					<li class="list-group-item" th:text="${direcciones.tDepartamento.nombreDepartamento}"></li>
+				</ul>
+				
+
+			</div>
+		</div>
+				<a class="btn btn-danger btn-xs float-right" th:href="@{'/detalle-direccion/' + ${direcciones.id}(format=pdf)}">PDF</a>
+	
+	</div>
+
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

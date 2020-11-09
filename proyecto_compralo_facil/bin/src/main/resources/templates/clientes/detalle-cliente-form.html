@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	
+	<div class="container py-4">
+	
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+								<a class="nav-link float-right" th:href="@{'/detalle-cliente/' + ${cliente.id}(format=pdf)}" 
+					title="Exportar a PDF" target="_blank">
+					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
+				    </a>	
+			<div class="card-body">
+
+				<ul class="list-group">
+					<li class="list-group-item active" th:text="${cliente.nombre}"></li>
+					<li class="list-group-item" th:text="${cliente.apellido}"></li>
+					<li class="list-group-item" th:text="${cliente.fechaNacimiento}"></li>
+					<li class="list-group-item" th:text="${cliente.telefono}"></li>
+					<li class="list-group-item" th:text="${cliente.correo}"></li>
+				</ul>
+
+
+				<table class="table table-bordered table-striped my-4">
+					<thead>
+						<tr>
+							<th>Descripcion</th>
+							<th>Codigo Postal</th>
+							<th>Municipio</th>
+							<th>Departamento</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="direccion: ${cliente.tDirecciones}">
+							<td th:text="${direccion.descDireccion}"></td>
+							<td th:text="${direccion.codigoPostal}"></td>
+							<td th:text="${direccion.tMunicipio.nombreMunicipio}"></td>
+							<td th:text="${direccion.tDepartamento.nombreDepartamento}"></td>
+
+						</tr>
+					</tbody>
+				</table>
+<!-- 				<div th:if="${#lists.isEmpty(cliente.tFacturas)}]" class="alert alert-danger" role="alert" > -->
+<!-- 					El cliente <a href="#" class="alert-link"> NO TIENE FACTURAS </a> ingresadas. -->
+<!-- 				</div> -->
+
+				<table class="table table-bordered table-striped my-4">
+					<h1 align="center">Facturas asociadas</h1>>
+					<thead class="thead-inverse">
+						<th>No.</th>
+						<th>Fecha</th>
+						<th>Total</th>
+					</thead>
+					<tbody>
+						<tr th:each="factura: ${cliente.tDirecciones}">
+							<td th:text="${factura.descDireccion}"></td>
+							<td th:text="${factura.codigoPostal}"></td>
+							<td th:text="${factura.tMunicipio.nombreMunicipio}"></td>
+
+						</tr>
+					</tbody>
+				</table>
+	<a class="btn btn-danger btn-xs float-right" th:href="@{'/detalle-cliente/' + ${cliente.id}(format=pdf)}">PDF</a>
+	
+			</div>
+		
+		</div>
+	</div>
+
+
+
+</body>
+</html>

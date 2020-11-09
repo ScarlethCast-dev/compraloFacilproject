@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+
+
+
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<link rel="stylesheet" th:href="@{/css/cuentacl.css}" />
+<link rel="stylesheet" th:href="@{/css/botoncuentacl.css}" />
+<link rel="stylesheet" th:href="@{/css/botoncuentacl.js}" />
+
+<h1 id="cuentac" class="lines-effect">MI CUENTA</h1>
+
+<div class="content centered-elements">
+  <div>
+ 
+    <button th:href="@{/informacionPersonal}" class="btn btn--2" >
+      Infromacion Personal  
+    </button>
+    <button class="btn btn--2">
+      paquetes de pago
+    </button>
+ 
+        <button class="btn btn--2">
+      Libreta de direcciones
+    </button>
+
+  </div>
+</div>
+
+            
+	<footer th:replace="layout/layout :: footer"></footer>    
+</body>
+</html>

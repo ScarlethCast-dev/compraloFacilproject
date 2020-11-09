@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+
+
+</head>
+<body>
+	<header th:replace="layout/layout :: header">
+		<link rel="shortcut icon" th:href="@{#}" />
+	   <!-- Bootstrap CSS -->
+    <link rel="stylesheet"  th:href="@{bootstrap/css/bootstrap.min.css}">
+    <!-- CSS personalizado --> 
+
+      <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <!--datables CSS básico-->
+    <link rel="stylesheet" type="text/css" th:href="@{datatables/datatables.min.css}"/>
+    <!--datables estilo bootstrap 4 CSS-->  
+    <link rel="stylesheet"  type="text/css" href="@{datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+           
+    <!--font awesome con CDN-->  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">  
+      
+	
+	</header>
+	
+	
+	<div class="container py-4">
+	<div class="dt-buttons btn-group">
+	<button class="btn btn-secondary buttons-excel buttons-html5 btn-success" tabindex="0" 
+	aria-controls="example" type="button" title="Exportar a Excel">
+	
+	<i class="fas fa-file-excel">
+	</i>
+	
+	
+	</button>
+	<button class="btn btn-secondary buttons-pdf buttons-html5 btn-danger" tabindex="0" 
+	aria-controls="example" type="button" title="Exportar a PDF">
+	
+	<button class="btn btn-secondary buttons-print btn-info" tabindex="0" 
+	aria-controls="example" type="button" title="Imprimir">
+	<span>
+	<i class="fa fa-print"></i>
+	</span>
+	</button>
+	</div>
+		<div class="card">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-tittle">
+
+					<a th:href="@{/nuevo-direccion}"
+						class="btn btn-outline-primary btn-xs">Agregar Direecion</a>
+						
+										<a class="nav-link float-right" th:href="@{/listar-direcciones/(format=pdf)}" 
+					title="Exportar a PDF" target="_blank">
+					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
+				    </a>		
+				</h4>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+				<table class="table table-striped " th:if="${!direcciones.isEmpty()}">
+					<thead class="bg-dark text-white text-center">
+						<tr>
+							<td>Id</td>
+							<td>Descripccion</td>
+							<td>Codigo Postal</td>
+							<td>Cliente</td>
+							<td>Municipio</td>
+							<td>Departamento</td>
+							<td>Editar</td>
+							<td>Eliminar</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="direccion: ${direcciones}" >
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{detalle-direccion/} + ${direccion.id}" th:text="${direccion.id}"></a></td>
+							<td th:text="${direccion.descDireccion}"></td>
+							<td th:text="${direccion.codigoPostal}"></td>	
+							<td th:text="${direccion.tCliente.nombre}"></td>
+							<td th:text="${direccion.tMunicipio.nombreMunicipio}"></td>
+							<td th:text="${direccion.tDepartamento.nombreDepartamento}"></td>					
+							<td class="text-center"><a
+								class="btn btn-outline-success btn-xs"
+								th:href="@{/editar-direccion/} + ${direccion.id}">Editar</a></td>
+							<td class="text-center" ><a
+								class="btn btn-outline-danger btn-xs"
+								th:href="@{/eliminar-direccion/} + ${direccion.id}"
+								onclick="return confirm('Desea eliminar la direccion?');">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+      
+    <!-- datatables JS -->
+    <script type="text/javascript" src="datatables/datatables.min.js"></script>    
+     
+	<!-- para usar botones en datatables JS -->  
+    <script src="datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>  
+    <script src="datatables/JSZip-2.5.0/jszip.min.js"></script>    
+    <script src="datatables/pdfmake-0.1.36/pdfmake.min.js"></script>    
+    <script src="datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+     
+
+    <script type="text/javascript" src="@{mainR.js}"></script>  
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

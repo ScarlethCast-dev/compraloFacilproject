@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+										<a class="nav-link float-right" th:href="@{'/detalle-pedido/' + ${pedido.id}(format=pdf)}" 
+					title="Exportar a PDF" target="_blank">
+					<img class="img-responsive center-box" th:src="@{/imagenes/pdf.png}" height="auto">						
+				    </a>	
+			<div class="card-body">
+
+				<ul class="list-group">
+					<li class="list-group-item active" th:text="${pedido.id}"></li>
+					<li class="list-group-item" th:text="${pedido.fechaPedido}"></li>
+					<li class="list-group-item" th:text="${pedido.tEstadoPedido.descripcion}"></li>
+					<li class="list-group-item" th:text="${pedido.tCliente.nombre}"></li>
+					<li class="list-group-item" th:text="${pedido.tMetodoEnvio.descripcion}"></li>
+				</ul>
+				
+				
+				<table class="table table-bordered table-striped my-4">
+					<thead>
+						<tr>
+							<th>Link Producto</th>
+							<th>Detalle Producto</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+						</tr>
+					</thead>
+					<tbody>
+							<tr th:each="pedido: ${pedido.tDetallePedidos}">
+							<td th:text="${pedido.linkProducto}"></td>
+							<td th:text="${pedido.detalleProducto}"></td>
+							<td th:text="${pedido.precio}"></td>
+							<td th:text="${pedido.cantidad}"></td>							
+							</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

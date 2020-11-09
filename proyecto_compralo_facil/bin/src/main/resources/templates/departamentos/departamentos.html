@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container py-4">
+		<div class="card">
+			<div class="card-header" th:text="${titulo}" style="font-style: oblique; font-size: x-large; text-align: center; font-weight: bold;"></div>
+			<div class="card-body">
+
+				<h4 class="card-tittle">
+
+					<a class="btn btn-outline-primary btn-xs text-white"
+						style="background-color: #0A1B2A; border-color: #0A1B2A;">Agregar Departamento</a>
+				</h4>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+			
+				<table class="table table-bordered table-dark" th:if="${!departamentos.isEmpty()}">
+				  <thead class="text-white text-center"  style="background-color: #0A1B2A;">
+				    <tr>
+				      <th scope="col">Id</th>
+				      <th scope="col">Departamento</th>
+				      <th scope="col">Detalle</th>
+				      <th scope="col">Editar</th>
+				      <th scope="col">Eliminar</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  <tr th:each="departamento: ${departamentos}"
+							th:style="${departamento.nombreDepartamento== null} ? 'background-color: red'">
+							<td th:href="${departamento.id}" th:text="${departamento.id}"
+								style="font-size: medium; font-weight: bold; font-family: fantasy;"></td>
+							<td th:text="${departamento.nombreDepartamento}"></td>
+							<td class="text-center"><a
+								class="btn btn btn-warning btn-xs"
+								th:href="@{detalle-departamento/} + ${departamento.id}" style="color: white; background-color: #0B4C5F; border-color: #0B4C5F;">Ver detalle</a></td>
+							<td class="text-center"><a
+								class="btn btn-success btn-xs"
+								th:href="@{/editar-departamento/} + ${departamento.id}">Editar</a></td>
+							<td class="text-center" ><a
+								class="btn btn-danger btn-xs"
+								th:href="@{/eliminar-departamento/} + ${departamento.id}"
+								onclick="return confirm('Desea eliminar el Departamento?');">Eliminar</a></td>
+						</tr>
+				 
+				  </tbody>
+				  
+				</table>	
+				
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
