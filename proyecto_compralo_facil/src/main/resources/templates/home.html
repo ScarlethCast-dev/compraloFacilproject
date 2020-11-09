@@ -2,34 +2,53 @@
 <html xmlns:th="http://thymeleaf.org">
 <html lang="en">
 <head th:replace="layout/layout :: head">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<title>Inicior</title>
 </head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<br />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Inicior</title>
-  </head>
-  <body>
-  <header th:replace="layout/layout :: header"></header>
-  <br/>
-    <div class="container">
+	<form th:action="@{/producto-amazon}" th:object="${producto}"
+		method="post">
+		<div class="form-group">
+			<label for="exampleInputEmail1">Consulta el precio del
+				producto, puesto en la puerta de tu casa </label> <input type="text"
+				class="form-control" id="linkAmazon" name="linkAmazon"
+				th:field="*{link}"
+				placeholder="Ingresa el link del producto de amazon">
+		</div>
+		<button type="submit" class="btn btn-primary">Consultar</button>
+	</form>
+	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
 				<div id="carouselExampleControls" class="carousel slide"
 					data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="imagenes/amazon2.png" class="d-block w-100" alt="..." width="1500px" height="450px">
+							<img src="imagenes/amazon2.png" class="d-block w-100" alt="..."
+								width="1500px" height="450px">
 						</div>
 						<div class="carousel-item">
-							<img src="imagenes/alexa.jpg" class="d-block w-100" alt="..." width="1500px" height="450px">
+							<img src="imagenes/alexa.jpg" class="d-block w-100" alt="..."
+								width="1500px" height="450px">
 						</div>
 						<div class="carousel-item">
-							<img src="imagenes/img1.jpg" class="d-block w-100" alt="..." width="1500px" height="450px">
+							<img src="imagenes/img1.jpg" class="d-block w-100" alt="..."
+								width="1500px" height="450px">
 						</div>
 						<div class="carousel-item">
-							<img src="imagenes/tiiiendaa.jpg" class="d-block w-100" alt="..." width="1500px" height="450px">
+							<img src="imagenes/tiiiendaa.jpg" class="d-block w-100" alt="..."
+								width="1500px" height="450px">
 						</div>
 					</div>
 					<a class="carousel-control-prev" href="#carouselExampleControls"
@@ -45,12 +64,20 @@
 			</div>
 		</div>
 	</div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<!--   <footer th:replace="layout/layout :: footer"></footer> -->
-  </body>
+	<footer th:replace="layout/layout :: footer"></footer>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<!--   <footer th:replace="layout/layout :: footer"></footer> -->
+</body>
 </html>
