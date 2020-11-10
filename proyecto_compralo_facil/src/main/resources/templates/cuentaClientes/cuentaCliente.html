@@ -16,16 +16,15 @@
 <div class="content centered-elements">
   <div>
  
-    <button th:href="@{/informacionPersonal}" class="btn btn--2" >
-      Infromacion Personal  
-    </button>
-    <button class="btn btn--2">
-      paquetes de pago
-    </button>
- 
-        <button class="btn btn--2">
-      Libreta de direcciones
-    </button>
+ <button class="btn btn--2" role="link" onclick="window.location='/informacionPersonal'">
+ Informacion Personal
+ </button>
+  <button class="btn btn--2" role="link" onclick="window.location='/paquetesDePago'">
+ Paquetes De Pago
+ </button>
+ <button class="btn btn--2" role="link" onclick="window.location='/libretaDeDirecciones'">
+ Libreta De Direcciones
+ </button>
 
   </div>
 </div>

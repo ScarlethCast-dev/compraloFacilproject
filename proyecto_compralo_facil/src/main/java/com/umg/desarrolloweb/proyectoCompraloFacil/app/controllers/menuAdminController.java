@@ -1,19 +1,17 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.controllers;
 
-
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Secured("ROLE_ADMIN")
 @Controller
-public class cuentaCliente {
-	
-	@GetMapping({"cuentaCliente"})
-	public String CuentaCliente() {
-		return"cuentaClientes/cuentaCliente";
+public class menuAdminController {
+	@GetMapping({"menuAdmin"})
+	public String menuAdministrador() {
+		return"menuAdmin/adminMenu";
 	}
+	/*
 	
 	@GetMapping({"informacionPersonal"})
 	public String InformacionPersonal() {
@@ -30,5 +28,5 @@ public class cuentaCliente {
 		return"cuentaClientes/direccionP";
 	}
 
-
+*/
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/layout :: head">
+
+
+
+</head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<link rel="stylesheet" th:href="@{/css/adminmenu.css}" />
+<link rel="stylesheet" th:href="@{/css/cuentacl.css}" />
+<link rel="stylesheet" th:href="@{/css/botoncuentacl.css}" />
+<link rel="stylesheet" th:href="@{/css/botoncuentacl.js}" />
+
+
+<br/>
+<br/>
+<br/>
+
+<h1 id="cuentac" class="lines-effect">ADMINISTRADOR</h1>
+
+<div class="content centered-elements">
+  <div>
+ 
+  <button class="button type2" role="link" onclick="window.location='/listar-clientes'">
+CLIENTES
+ </button>
+  <button class="button type2" role="link" onclick="window.location='/listar-departamentos'">
+DEPARTAMENTOS
+ </button>
+   <button class="button type2" role="link" onclick="window.location='/listar-direcciones'">
+DIRECCIONES
+ </button>
+   <button class="button type2" role="link" onclick="window.location='/listar-metodoenvios'">
+ METODO DE ENVIO
+ </button>
+   <button class="button type2" role="link" onclick="window.location='/listar-metodopagos'">
+ METODO DE PAGO
+ </button>
+
+   <button class="button type2" role="link" onclick="window.location='/listar-municipios'">
+ MUNICIPIO
+ </button>
+   <button class="button type2" role="link" onclick="window.location='/listar-productos'">
+PRODUCTOS
+ </button>
+  
+   <button class="button type2" role="link" onclick="window.location='/listar-pedido'">
+PEDIDOS
+ </button>
+   <button class="button type2" role="link" onclick="window.location='/paquetesDePago'">
+ Paquetes De Pago
+ </button>
+   <button class="button type2" role="link" onclick="window.location='/paquetesDePago'">
+ Paquetes De Pago
+ </button>
+   <button class="button type2" role="link" onclick="window.location='/paquetesDePago'">
+ Paquetes De Pago
+ </button>
+
+  </div>
+</div>
+
+            
+	<footer th:replace="layout/layout :: footer"></footer>    
+</body>
+</html>
