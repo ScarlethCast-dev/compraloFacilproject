@@ -35,6 +35,8 @@ public class DetallePedidoController {
 	  costoQuetzales(productoAmazon);
 	  productoAmazon.setLink(producto.getLink());
 	  model.addAttribute("productoAmazon", productoAmazon); 
+	  model.addAttribute("titulo", "Cotización");
+	  
 	  return "producto-amazon"; 
 	 }  
 	  
