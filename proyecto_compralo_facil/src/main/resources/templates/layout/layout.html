@@ -42,7 +42,7 @@
 			<div class="container" align="center">
 				<div class="row" align="center">
 					<div class="col-7">
-						<a href="#" class=".btn btn-primary  btn-lg active" role="button"
+						<a th:href="@{/login}" class=".btn btn-primary  btn-lg active" role="button"
 							aria-pressed="true" style="background-color: #FE9A2E !important;">
 							<img src="imagenes/registro.png" width="30" height="25"
 							alt="Logo compralo fácil"> Iniciar Sesion
@@ -54,13 +54,7 @@
 							aria-pressed="true" style="background-color: #FE9A2E !important;">
 							Registrarse</a>
 					</div>
-					<div class="col-7" align="center">
-						<p sec:authorize="isAuthenticated()">
-							Usuario logeado: <span sec:authentication="name"></span> | Roles:
-							<span sec:authentication="principal.authorities"></span>
-						</p>
 
-					</div>
 
 				</div>
 
