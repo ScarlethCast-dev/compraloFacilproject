@@ -53,8 +53,8 @@ INSERT INTO t_pedido(ts_created, ts_modified, usu_created, usu_modified, fecha_p
 INSERT INTO t_detalle_pedido(ts_created, ts_modified, usu_created, usu_modified, cantidad, detalle_producto, link_producto, precio, id_pedido) values ('1999-12-31 23:59:59','1999-12-31 23:59:59','Jefe','Jefe', 1, 'Laptop', 'google.com', 5000, 1);
 INSERT INTO t_detalle_pedido(ts_created, ts_modified, usu_created, usu_modified, cantidad, detalle_producto, link_producto, precio, id_pedido) values ('1999-12-31 23:59:59','1999-12-31 23:59:59','Jefe','Jefe', 1, 'RTX 3000', 'google.com', 3000, 1);
 /*Usuarios*/
-INSERT INTO `usuarios` (username, password, enabled) VALUES ('Diego','$2a$10$FaIiyLiDPQGeib68rNlfl.stch3cyY54g54/PPV/95QHIQzbnIuQq',1);
-INSERT INTO `usuarios` (username, password, enabled) VALUES ('Admin','$2a$10$WxQu2py8fgu13NSRW608PecobtTYr4BOy10USEANXt8WFOBv5/Bf6',1);
+INSERT INTO `usuarios` (username, password, enabled, cliente_id) VALUES ('Diego','$2a$10$FaIiyLiDPQGeib68rNlfl.stch3cyY54g54/PPV/95QHIQzbnIuQq',1, 1);
+INSERT INTO `usuarios` (username, password, enabled, cliente_id) VALUES ('Admin','$2a$10$WxQu2py8fgu13NSRW608PecobtTYr4BOy10USEANXt8WFOBv5/Bf6',1, 5);
 
 INSERT INTO `authorities` (id_usuario, authority) values (1, 'ROLE_USER');
 INSERT INTO `authorities` (id_usuario, authority) values (2, 'ROLE_ADMIN');

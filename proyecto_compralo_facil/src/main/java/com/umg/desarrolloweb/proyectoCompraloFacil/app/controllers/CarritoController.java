@@ -1,24 +1,33 @@
 package com.umg.desarrolloweb.proyectoCompraloFacil.app.controllers;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TDetallePedido;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.dto.CarritoDTO;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TUsuario;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.UsuarioRepository;
 
 @Secured("ROLE_ADMIN")
 @Controller
 public class CarritoController {
 
-	private List<TDetallePedido> lista = new ArrayList<>();
+	private List<CarritoDTO> lista = new ArrayList<>();
 	private Integer total;
+	
+	@Autowired
+	private UsuarioRepository userRepository;
 	
 	@GetMapping("/form")
 	public String form(Model model) {
@@ -27,18 +36,24 @@ public class CarritoController {
 	}
 
 	@PostMapping("/carrito")
-	public String ingresar(TDetallePedido tDetallePedido,  Model model) {
+	public String ingresar(Model model, 
+			 @RequestParam(name = "cantidad") Long cantidad,
+			 @RequestParam(name = "asin") String codigo,
+			 @RequestParam(name = "productTitle") String producto,
+			 @RequestParam(name = "precioQuetzales") BigDecimal precio,
+			 @RequestParam(name = "mainImage.imageUrl") String imagen,
+			 @RequestParam(name = "link") String link) {
 	
-		TDetallePedido det = new TDetallePedido();
+		CarritoDTO det = new CarritoDTO();
 		
 		boolean dado=true; 
 		Long cantidadSum;
 		for (int i = 0; i < lista.size(); i++) {
-			if (Objects.equals(lista.get(i).getIdDetallePedido(), tDetallePedido.getIdDetallePedido())) {
+			if (Objects.equals(lista.get(i).getCodigoProducto(), codigo)) {
 				cantidadSum=lista.get(i).getCantidad() + 1;
-				det.setIdDetallePedido(lista.get(i).getIdDetallePedido());
-				det.setLinkProducto(lista.get(i).getLinkProducto());
-				det.setDetalleProducto(lista.get(i).getDetalleProducto());
+				det.setCodigoProducto(lista.get(i).getCodigoProducto());
+				det.setLink(lista.get(i).getLink());
+				det.setDescripcion(lista.get(i).getDescripcion());
 				det.setPrecio(lista.get(i).getPrecio());
 				det.setCantidad(cantidadSum);
 				
@@ -47,12 +62,15 @@ public class CarritoController {
 			}
 		}
 		
+		
 		if (dado==true) {
-			det.setIdDetallePedido(tDetallePedido.getIdDetallePedido());
-			det.setLinkProducto(tDetallePedido.getLinkProducto());
-			det.setDetalleProducto(tDetallePedido.getDetalleProducto());
-			det.setPrecio(tDetallePedido.getPrecio());
-			det.setCantidad(tDetallePedido.getCantidad());
+			Long pre= precio.longValue();
+			det.setCodigoProducto(codigo);
+			det.setLink(link);
+			det.setDescripcion(producto);
+			det.setPrecio(pre);
+			det.setImagenProducto(imagen);
+			det.setCantidad(cantidad);
 			
 			this.lista.add(det);
 			
@@ -62,10 +80,10 @@ public class CarritoController {
 		return "redirect:/carrito";	
 	}
 	
-	@GetMapping(value = "/eliminar-producto-carrito/{id}") 
-	public String eliminar(@PathVariable(value = "id") Long id){
+	@GetMapping(value = "/eliminar-producto-carrito/{codigo}") 
+	public String eliminar(@PathVariable(value = "codigo") String codigo){
 		for (int i = 0; i < lista.size(); i++) {
-			if(Objects.equals(lista.get(i).getIdDetallePedido(), id)) {
+			if(Objects.equals(lista.get(i).getCodigoProducto(), codigo)) {
 				this.lista.remove(i);
 			}
 		}
@@ -85,29 +103,33 @@ public class CarritoController {
 	}
 	
 	@GetMapping("/carrito-pago")
-	public String pago(Model model) {
+	public String pago(Model model, Authentication authentication) {
 		total();
 		
+		TUsuario usuario = userRepository.findByUsername(authentication.getName());
 		model.addAttribute("titulo", "Formulario de Pago");
 		model.addAttribute("total", total);
 		model.addAttribute("lista", lista);
+		model.addAttribute("usuario", usuario);
 
 		return "carrito/carrito-pago";
 		
 	}
 	
-	@GetMapping(value = "/cambiar-suma/{id}") 
-	public String sumar(@PathVariable(value = "id") Long id){
-		TDetallePedido det = new TDetallePedido();
+	@GetMapping(value = "/cambiar-suma/{codigo}") 
+	public String sumar(@PathVariable(value = "codigo") String codigo){
+		CarritoDTO det = new CarritoDTO();
 		Long cantidadSum;
 		for (int i = 0; i < lista.size(); i++) {
-			if(Objects.equals(lista.get(i).getIdDetallePedido(), id)) {
-				cantidadSum=lista.get(i).getCantidad() + 1;
-				det.setIdDetallePedido(lista.get(i).getIdDetallePedido());
-				det.setLinkProducto(lista.get(i).getLinkProducto());
-				det.setDetalleProducto(lista.get(i).getDetalleProducto());
+			if(Objects.equals(lista.get(i).getCodigoProducto(), codigo)) {
+				cantidadSum=lista.get(i).getCantidad() + 1;				
+				det.setCodigoProducto(lista.get(i).getCodigoProducto());
+				det.setLink(lista.get(i).getLink());
+				det.setDescripcion(lista.get(i).getDescripcion());
 				det.setPrecio(lista.get(i).getPrecio());
+				det.setImagenProducto(lista.get(i).getImagenProducto());
 				det.setCantidad(cantidadSum);
+				
 				
 				this.lista.set(i, det);
 				
@@ -116,24 +138,25 @@ public class CarritoController {
 		return "redirect:/carrito";
 	}
 	
-	@GetMapping(value = "/cambiar-resta/{id}") 
-	public String restar(@PathVariable(value = "id") Long id){
-		TDetallePedido det = new TDetallePedido();
+	@GetMapping(value = "/cambiar-resta/{codigo}") 
+	public String restar(@PathVariable(value = "codigo") String codigo){
+		CarritoDTO det = new CarritoDTO();
 		Long cantidadSum;
 		for (int i = 0; i < lista.size(); i++) {
-			if(Objects.equals(lista.get(i).getIdDetallePedido(), id)) {
+			if(Objects.equals(lista.get(i).getCodigoProducto(), codigo)) {
 				
 				cantidadSum=lista.get(i).getCantidad() - 1;
-				det.setIdDetallePedido(lista.get(i).getIdDetallePedido());
-				det.setLinkProducto(lista.get(i).getLinkProducto());
-				det.setDetalleProducto(lista.get(i).getDetalleProducto());
+				det.setCodigoProducto(lista.get(i).getCodigoProducto());
+				det.setLink(lista.get(i).getLink());
+				det.setDescripcion(lista.get(i).getDescripcion());
 				det.setPrecio(lista.get(i).getPrecio());
+				det.setImagenProducto(lista.get(i).getImagenProducto());
 				det.setCantidad(cantidadSum);
 				
 				this.lista.set(i, det);
 				
 				if (cantidadSum==0) {
-					return "redirect:/eliminar-producto-carrito/"+id;
+					return "redirect:/eliminar-producto-carrito/"+codigo;
 				}
 				
 			}
@@ -145,7 +168,7 @@ public class CarritoController {
 	
 	public void total(){
 		total=0;
-		for(TDetallePedido det1: lista) {
+		for(CarritoDTO det1: lista) {
 			total += Integer.valueOf(det1.getCantidad().intValue()) * Integer.valueOf(det1.getPrecio().intValue()); 
 		}
 		
