@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Secured("ROLE_ADMIN")
 @Controller
 public class menuAdminController {
-	@GetMapping({"menuAdmin"})
+	@GetMapping({"/menuAdmin"})
 	public String menuAdministrador() {
 		return"menuAdmin/adminMenu";
 	}
