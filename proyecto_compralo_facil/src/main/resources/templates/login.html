@@ -1,44 +1,99 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:replace="layout/layout :: head">
+<meta charset="UTF-8" />
+<!--JQUERY-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+<!-- <script src="https://kit.fontawesome.com/807242ed85.js"></script> 
+
+<!-- Nuestro css-->
+<!-- <link rel="stylesheet" th:href="@{/css/all.min.css}"> -->
+<link rel="stylesheet" th:href="@{/css/login.css}">
+
 </head>
-<body>
+<body style="background-color: #0B243B;">
 	<header th:replace="layout/layout :: header"></header>
-	<div class="container py-4">
-
-		<div class="card border-primary text-center">
-			<div class="card-header">Por favor Sign In!</div>
-			<div class="card-body">
-
-				<form th:action="@{/login}" method="post">
-
-					<div class="form-group col-sm-6">
+	<div class="modal-dialog text-center" align="center" >
+		<div class="col-sm-12 main-section" >
+			<div class="modal-content" style="background-color: #A9D0F5;">
+				<div class="col-12 user-img">
+					<img th:src="@{/imagenes/avatar1.png}" style="width: 200px; height: 200px;" />
+				</div>
+				
+				<div>
+				<br/> <br/>
+					<form class="col-12" th:action="@{/login}" method="post">
+					<div class="col-12 forgot">
+                    <p style="font-style: oblique; font-weight: bold;"> ¡Hola, inicia sesión aquí!</p>
+                	</div>
+                	<center>
+					<div class="form-group col-sm-8" id="user-group">
 						<input type="text" name="username" id="username"
-							class="form-control" placeholder="UserName" autofocus required />
-					</div>
-
-					<div class="form-group col-sm-6">
+							class="form-control" placeholder="Nombre de usuario" autofocus required />
+					</div></center>
+					<center>
+					<div class="form-group col-sm-8" id="contrasena-group">
 						<input type="password" name="password" id="password"
-							class="form-control" placeholder="Password" required />
+							class="form-control" placeholder="Contraseña" required />
+					</div></center>
+					
+					<div class="form-group col-sm-12" align="center">
+						<button type="submit" class="btn  btn-primary" style="background-color: #FF4000; border-color:orange; "> Ingresar </button>
 					</div>
-
-					<div class="form-group col-sm-6">
-						<input type="submit" class="btn btn-lg btn-primary btn-block"
-							value="Sign In" />
-					</div>
+				
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-
-				</form>
-
+					</form>
+					<div class="col-12 forgot">
+                    <a href="#">¿Olvidaste la contraseña?</a>
+                </div>
+                	<br/>
+				</div>
 			</div>
-
 		</div>
 
 
 	</div>
+	
+		<footer th:fragment="footer" id="footer" class="container-fluid"
+		style="background-color: #0D0D2A !important; color: white !important; font-size: medium;">
+		<div class="container-fluid" style="background-color: #0D0D2A !important;"></div><div class="row" align="center">
+			<div class="col-12 col-lg">
+				<h3>Síguenos en</h3>
+				<p>
+					<img src="imagenes/facebook.png" alt="Logo compralo fácil" width="25" height="25"> <img src="imagenes/instagram.png" alt="Logo compralo fácil" width="25" height="25">
+				</p>
+				<img src="imagenes/gorjeo.png" alt="Logo compralo fácil" width="25" height="25">
+				<p></p>
+			</div>
+			<div class="col-12 col-lg">
+				<h4>Todos los derechos reservados por CompráloFácil Group In
+					2020</h4>
+				<p>
+					<strong>Ubicación</strong> Zona 5, Pradera, Huehuetenango.<br>
+					<strong>Télefono</strong> 22563689<br> <strong>Email</strong>
+					compralofacil@gmail.com
+				</p>
 
+			</div>
+			<div class="col-12 col-lg">
+				<a href="#" style="color: white;">Términos y condiciones</a>
+			</div>
+			<div class="col-12 col-lg">
+				<a href="#" style="color: white;">Privacidad</a>
+			</div>
 
+		</div><script th:src="@{/js/jquery-3.2.1.min.js}"></script><script th:src="@{/js/popper.min.js}"></script><script th:src="@{/js/bootstrap.min.js}"></script><script th:src="@{/js/jquery-ui.min.js}"></script>
+		
 
-	<footer th:replace="layout/layout :: footer"></footer>
+	</footer>
 </body>
 </html>
