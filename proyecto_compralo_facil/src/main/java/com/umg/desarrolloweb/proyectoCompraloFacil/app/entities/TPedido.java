@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 @Entity
 @Table(name="t_pedido")
 public class TPedido extends AbstractEntity implements Serializable  {
@@ -118,6 +119,9 @@ public class TPedido extends AbstractEntity implements Serializable  {
 		this.tDetallePedidos = tDetallePedidos;
 	}
 	
+	public void addItemPedido(TDetallePedido item) {
+		this.tDetallePedidos.add(item);
+	}
 	
 
 	
