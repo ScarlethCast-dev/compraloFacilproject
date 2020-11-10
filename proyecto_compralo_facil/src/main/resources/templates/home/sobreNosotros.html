@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:replace="layout/layout :: head">
-<link rel="stylesheet" th:href="@{/css/divs.css}" />
-</head>
+
+<title th:text="${titulo}"></title>
 <meta charset="utf-8">
+
+
+<link rel="stylesheet" th:href="@{/css/divs.css}" />
+
+</head>
+
 <body>
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container py-4"></div>
+	
+	
+
+
 
 	<h1 align="center" style="font-family:cursive; font-size: 250%; "> Sobre Nosotros</h1>
 	<hr/>
