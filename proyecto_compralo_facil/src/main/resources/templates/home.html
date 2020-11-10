@@ -16,17 +16,23 @@
 <body>
 	<header th:replace="layout/layout :: header"></header>
 	<br />
-
 	<form th:action="@{/producto-amazon}" th:object="${producto}"
 		method="post">
 		<div class="form-group">
-			<label for="exampleInputEmail1">Consulta el precio del
-				producto, puesto en la puerta de tu casa </label> <input type="text"
-				class="form-control" id="linkAmazon" name="linkAmazon"
-				th:field="*{link}"
-				placeholder="Ingresa el link del producto de amazon">
-		</div>
-		<button type="submit" class="btn btn-primary">Consultar</button>
+
+			<center><p><input type="text" name="linkAmazon" style="width : 800px; heigth : 600px;" th:field="*{link}" placeholder="Ingresa el link del producto de amazon"/> 
+<!-- 			<button type="submit" class="btn btn-info" style="heigth : 700px;">Info</button> <p> </center> -->
+<!--
+
+		<!-- 		 		<div class="form-group">  -->
+		<!-- 		 			<label for="exampleInputEmail1">Consulta el precio del  -->
+		<!-- 		 				producto, puesto en la puerta de tu casa </label><br/> <center><input type="text" -->
+		<!-- 		 				 id="linkAmazon" name="linkAmazon"  -->
+		<!-- 		 				th:field="*{link}" class="form-control"  -->
+		<!-- 		 				placeholder="Ingresa el link del producto de amazon"> </center> -->
+		<!-- 				</div>  -->
+		 		 		<button type="submit" class="btn btn-primary" style="heigth : 700px;">Consultar</button> 
+	</div>
 	</form>
 	<div class="container">
 		<div class="row">
