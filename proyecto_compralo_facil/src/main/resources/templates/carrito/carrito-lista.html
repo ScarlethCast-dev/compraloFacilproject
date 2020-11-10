@@ -16,7 +16,7 @@
 
 				<h4 class="card-tittle">
 
-					<a th:href="@{/form}" class="btn btn-outline-primary btn-xs">Seguir
+					<a th:href="@{/inicio}" class="btn btn-outline-primary btn-xs">Seguir
 						comprando</a>
 				</h4>
 				<table class="table table-over">
@@ -34,22 +34,22 @@
 					</thead>
 					<tbody>
 						<tr th:each="det : ${tDetallePedido}">
-							<td scope="row" th:text="${det.idDetallePedido}"></td>
+							<td scope="row" th:text="${det.codigoProducto}"></td>
 							<td><img class="img-thumbnail rounded float-left"
-								src="https://cdn.shopify.com/s/files/1/0101/2522/products/MXM92.jpg?v=1586985638"
-								width="100" height="100" th:alt="${det.linkProducto}" /></td>
-							<td th:text="${det.detalleProducto}"></td>
+								th:src="${det.imagenProducto}"
+								width="100" height="100" th:alt="${det.imagenProducto}" /></td>
+							<td th:text="${det.descripcion}"></td>
 							<td th:text="'Q ' + ${det.precio}"></td>
 							<td><a class="btn btn-secondary btn-xs"
-								th:href="@{/cambiar-resta/} + ${det.idDetallePedido}"
+								th:href="@{/cambiar-resta/} + ${det.codigoProducto}"
 								th:text="'-'"></a></td>
 							<td th:text="${det.cantidad}"></td>
 							<td><a class="btn btn-secondary btn-xs"
-								th:href="@{/cambiar-suma/} + ${det.idDetallePedido}"
+								th:href="@{/cambiar-suma/} + ${det.codigoProducto}"
 								th:text="'+'"></a></td>
 							<td th:text="'Q ' + ${det.precio * det.cantidad}"></td>
 							<td><a class="btn btn-outline-danger btn-xs"
-								th:href="@{/eliminar-producto-carrito/} + ${det.idDetallePedido}"
+								th:href="@{/eliminar-producto-carrito/} + ${det.codigoProducto}"
 								onclick="return confirm('Desea eliminar Producto');">Eliminar</a></td>
 						</tr>
 					</tbody>

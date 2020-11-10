@@ -10,34 +10,32 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<h1 class="page-header" th:text="${titulo}"></h1>
+				<h1 class="page-header" th:text="${titulo}" ></h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-6 mb-4">
-				<form>
+				<form th:object="${usuario}">
 					<div class="form-group">
-						<label for="full_name_id" class="control-label">Full Name</label>
-						<input type="text" class="form-control" id="full_name_id"
-							name="full_name" placeholder="John Deer">
+						<label for="nombre" class="control-label">Nombre</label>
+						<input type="text" class="form-control" id="nombre"
+							th:field="*{cliente.nombre}">
 					</div>
 					<div class="form-group">
-						<label for="street1_id" class="control-label">Street
-							Address 1</label> <input type="text" class="form-control" id="street1_id"
-							name="street1"
-							placeholder="Street address, P.O. box, company name, c/o">
+						<label for="apellido" class="control-label">Apellido</label> 
+						<input type="text" class="form-control" id="apellido"
+							th:field="*{cliente.apellido}" >
 					</div>
 					<div class="form-group">
-						<label for="street2_id" class="control-label">Street
-							Address 2</label> <input type="text" class="form-control" id="street2_id"
-							name="street2"
-							placeholder="Apartment, suite, unit, building, floor, etc.">
+						<label for="dpi" class="control-label">DPI</label>
+						 <input type="text" class="form-control" id="dpi"
+							th:field="*{cliente.dpi}">
 					</div>
 					<div class="form-group">
 
-						<label for="city_id" class="control-label">City</label> <input
-							type="text" class="form-control" id="city_id" name="city"
-							placeholder="Smallville">
+						<label for="telefono" class="control-label">Telefono</label>
+						<input
+							type="text" class="form-control" id="telefono" th:field="*{cliente.telefono}">
 					</div>
 					<div class="form-group">
 						<!-- State Button -->
@@ -97,13 +95,15 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="zip_id" class="control-label">Zip Code</label> <input
-							type="text" class="form-control" id="zip_id" name="zip"
-							placeholder="#####">
+						<label for="nit" class="control-label">NIT</label> <input
+							type="text" class="form-control" id="nit" th:field="*{cliente.nit}">
 					</div>
+					
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Buy!</button>
+						<label for="correo" class="control-label">Correo</label> <input
+							type="text" class="form-control" id="correo" th:field="*{cliente.correo}">
 					</div>
+
 				</form>
 
 			</div>

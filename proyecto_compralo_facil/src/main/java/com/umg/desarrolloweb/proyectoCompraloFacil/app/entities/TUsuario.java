@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,6 +32,10 @@ public class TUsuario implements Serializable {
 	@JoinColumn(name = "id_usuario")
 	private List<TAuthorities> tAuthorities;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cliente_id")
+	private TCliente cliente;
+	
 	public Long getId() {
 		return id;
 	}
@@ -70,6 +75,16 @@ public class TUsuario implements Serializable {
 	public void settAuthorities(List<TAuthorities> tAuthorities) {
 		this.tAuthorities = tAuthorities;
 	}
+
+	public TCliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(TCliente cliente) {
+		this.cliente = cliente;
+	}
+
+
 
 	private static final long serialVersionUID = 1L;
 
