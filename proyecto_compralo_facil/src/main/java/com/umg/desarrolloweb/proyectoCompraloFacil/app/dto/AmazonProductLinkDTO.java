@@ -130,6 +130,7 @@ public class AmazonProductLinkDTO {
 	public void setLink(String link) {
 	 this.link = link;
 	}
+	
 	private String responseStatus; 
 	private String productRating; 
 	private String productTitle;
@@ -148,6 +149,14 @@ public class AmazonProductLinkDTO {
 	private BigDecimal salePrice;
 	private MainImageDTO mainImage;
 	private List<String> categories; 
+	
+//	private Long nuevoPrecio = precioQuetzales.longValue();
+//	public Long getNuevoPrecio() {
+//		return nuevoPrecio;
+//	}
+//	public void setNuevoPrecio(Long nuevoPrecio) {
+//		this.nuevoPrecio = nuevoPrecio;
+//	}
 	
 	
 }

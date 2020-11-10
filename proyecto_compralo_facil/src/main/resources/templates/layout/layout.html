@@ -104,15 +104,18 @@
 								<button class="dropdown-item"
 									onclick="document.getElementById('logoutForm').submit();"
 									type="submit">Sign Out</button>
+									<a <button type="button" class="dropdown-item" sec:authorize="hasRole('ROLE_ADMIN')"
+								th:href= "@{/menuAdmin}">Administracion</button></a>
+									
 								<input type="hidden" th:name="${_csrf.parameterName}"
 									th:value="${_csrf.token}" />
 
 								</form>
 								
-							<a <button type="button" class="dropdown-item"
-							th:href= "@{/menuAdmin}">Administracion</button></a>
+						
 
 						</div>
+						
 				</ul>
 				
 				
