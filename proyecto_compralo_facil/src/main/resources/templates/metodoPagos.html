@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:replace="layout/layout :: head">
+<meta charset="UTF-8" />
 </head>
 <body>
 	<header th:replace="layout/layout :: header"></header>
@@ -51,7 +52,39 @@
 			</div>
 		</div>
 	</div>
+	<br/><br/><br/><br/><br/><br/><br/><br/>
+<footer th:fragment="footer" id="footer" class="container-fluid"
+		style="background-color: #0D0D2A !important; color: white !important; font-size: medium; ">
+		<div class="container-fluid" style="background-color: #0D0D2A !important;"></div><div class="row" align="center">
+			<div class="col-12 col-lg">
+				<h3>Síguenos en</h3>
+				<p>
+					<img src="imagenes/facebook.png" alt="Logo compralo fácil" width="25" height="25"> <img src="imagenes/instagram.png" alt="Logo compralo fácil" width="25" height="25">
+				</p>
+				<img src="imagenes/gorjeo.png" alt="Logo compralo fácil" width="25" height="25">
+				<p></p>
+			</div>
+			<div class="col-12 col-lg">
+				<h4>Todos los derechos reservados por CompráloFácil Group In
+					2020</h4>
+				<p>
+					<strong>Ubicación</strong> Zona 5, Pradera, Huehuetenango.<br>
+					<strong>Télefono</strong> 22563689<br> <strong>Email</strong>
+					compralofacil@gmail.com
+				</p>
 
-	<footer th:replace="layout/layout :: footer"></footer>
+			</div>
+			<div class="col-12 col-lg">
+				<a href="#" style="color: white;">Términos y condiciones</a>
+			</div>
+			<div class="col-12 col-lg">
+				<a href="#" style="color: white;">Privacidad</a>
+			</div>
+
+		</div><script th:src="@{/js/jquery-3.2.1.min.js}"></script><script th:src="@{/js/popper.min.js}"></script><script th:src="@{/js/bootstrap.min.js}"></script><script th:src="@{/js/jquery-ui.min.js}"></script>
+		
+
+	</footer>
+<!-- 	<footer th:replace="layout/layout :: footer"></footer> -->
 </body>
 </html>
