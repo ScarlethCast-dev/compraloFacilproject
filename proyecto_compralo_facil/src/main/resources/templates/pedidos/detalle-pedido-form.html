@@ -35,7 +35,6 @@
 					<thead>
 						<tr>
 							<th>Codigo</th>
-							<th>Link Producto</th>
 							<th>Detalle Producto</th>
 							<th>Precio</th>
 							<th>Cantidad</th>
@@ -44,7 +43,6 @@
 					<tbody>
 							<tr th:each="pedido: ${pedido.tDetallePedidos}">
 							<td th:text="${pedido.codigo}"></td>
-							<td th:text="${pedido.linkProducto}"></td>
 							<td th:text="${pedido.detalleProducto}"></td>
 							<td th:text="${pedido.precio}"></td>
 							<td th:text="${pedido.cantidad}"></td>

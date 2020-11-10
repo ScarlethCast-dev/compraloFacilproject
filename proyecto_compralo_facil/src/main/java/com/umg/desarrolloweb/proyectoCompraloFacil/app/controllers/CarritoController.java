@@ -223,9 +223,17 @@ public class CarritoController {
 		lista.clear();
 		
 		return "redirect:/listar-pedido";
-		
-		
+
 	}
+	
+	@GetMapping(value = "/vaciar-carrito") 
+	public String vaciar(){
+
+		lista.clear();
+		return "redirect:/carrito";
+	}
+	
+	
 	
 
 }
