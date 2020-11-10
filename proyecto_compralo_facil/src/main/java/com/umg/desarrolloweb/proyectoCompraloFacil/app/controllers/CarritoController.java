@@ -2,6 +2,7 @@ package com.umg.desarrolloweb.proyectoCompraloFacil.app.controllers;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +17,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.dto.CarritoDTO;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.Audit;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TCliente;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TDetallePedido;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TEstadoPedido;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TMetodoEnvio;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TPedido;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.entities.TUsuario;
+import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.PedidoRepository;
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.UsuarioRepository;
 
 @Secured("ROLE_ADMIN")
@@ -28,6 +36,9 @@ public class CarritoController {
 	
 	@Autowired
 	private UsuarioRepository userRepository;
+	
+	@Autowired
+	private PedidoRepository pedidoRepository;	 
 	
 	@GetMapping("/form")
 	public String form(Model model) {
@@ -163,9 +174,7 @@ public class CarritoController {
 		}
 		return "redirect:/carrito";
 	}
-	
-	
-	
+
 	public void total(){
 		total=0;
 		for(CarritoDTO det1: lista) {
@@ -173,5 +182,50 @@ public class CarritoController {
 		}
 		
 	}
+	
+	@PostMapping("/generar-pedido")
+	public String guardar(TPedido pedido, Authentication authentication) {
+		
+		for (int i = 0; i < lista.size(); i++) {
+			
+			TDetallePedido det = new TDetallePedido();
+			det.setCodigo(lista.get(i).getCodigoProducto());
+			det.setLinkProducto(lista.get(i).getLink());
+			det.setDetalleProducto(lista.get(i).getDescripcion());
+			det.setPrecio(lista.get(i).getPrecio());
+			det.setCantidad(lista.get(i).getCantidad());
+			
+			pedido.addItemPedido(det);	
+		}
+		
+		
+		
+		Date fecha= new Date();
+		TUsuario usuario = userRepository.findByUsername(authentication.getName());
+		
+		pedido.setFechaPedido(fecha);
+		TCliente cli = new TCliente();
+		cli.setId(usuario.getCliente().getId());
+		pedido.settCliente(cli);
+		TEstadoPedido ped = new TEstadoPedido();
+		ped.setId(1l);
+		pedido.settEstadoPedido(ped);
+		TMetodoEnvio env = new TMetodoEnvio();
+		env.setId(1l);
+		pedido.settMetodoEnvio(env);
+		
+		Audit audit = null;
+		audit = new Audit("Diego Creador");
+		pedido.setAudit(audit);
+		
+		pedidoRepository.save(pedido);
+		
+		lista.clear();
+		
+		return "redirect:/listar-pedido";
+		
+		
+	}
+	
 
 }
