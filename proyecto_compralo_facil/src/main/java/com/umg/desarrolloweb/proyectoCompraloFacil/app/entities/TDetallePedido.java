@@ -12,20 +12,30 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_detalle_pedido")
-public class TDetallePedido extends AbstractEntity implements Serializable{
+public class TDetallePedido implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_detalle_pedido")
 	private Long idDetallePedido;
 	
-	@Column(name = "link_producto")
+	private String codigo;
+	
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	@Column(name = "link_producto", length = 1000)
 	private String linkProducto;
 	
 	@Column(name = "detalle_producto")
 	private String detalleProducto;
 
-	private BigDecimal precio;
+	private Long precio;
 	private Long cantidad;
 	
 	public Long getIdDetallePedido() {
@@ -52,11 +62,12 @@ public class TDetallePedido extends AbstractEntity implements Serializable{
 		this.detalleProducto = detalleProducto;
 	}
 
-	public BigDecimal getPrecio() {
+
+	public Long getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(BigDecimal precio) {
+	public void setPrecio(Long precio) {
 		this.precio = precio;
 	}
 
