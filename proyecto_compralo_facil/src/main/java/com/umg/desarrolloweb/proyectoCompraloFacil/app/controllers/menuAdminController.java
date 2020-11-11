@@ -2,14 +2,16 @@ package com.umg.desarrolloweb.proyectoCompraloFacil.app.controllers;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Secured("ROLE_ADMIN")
 @Controller
 public class menuAdminController {
-	@GetMapping({"menuAdmin"})
-	public String menuAdministrador() {
-		return"menuAdmin/adminMenu";
+	@GetMapping({"/menuAdmin"})
+	public String menuAdministrador(Model model) {
+		model.addAttribute("titulo", "Administrador");
+		return"menuAdmin/adminMenu"; 
 	}
 	/*
 	

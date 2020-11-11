@@ -51,10 +51,13 @@ public class CarritoController {
 			 @RequestParam(name = "cantidad") Long cantidad,
 			 @RequestParam(name = "asin") String codigo,
 			 @RequestParam(name = "productTitle") String producto,
+//			 @RequestParam(name = "nuevoPrecio") Long precioQuetzales,
 			 @RequestParam(name = "precioQuetzales") BigDecimal precio,
 			 @RequestParam(name = "mainImage.imageUrl") String imagen,
 			 @RequestParam(name = "link") String link) {
 	
+
+		
 		CarritoDTO det = new CarritoDTO();
 		
 		boolean dado=true; 

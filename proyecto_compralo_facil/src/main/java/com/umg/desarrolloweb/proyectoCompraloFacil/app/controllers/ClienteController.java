@@ -26,7 +26,6 @@ import com.umg.desarrolloweb.proyectoCompraloFacil.app.repositories.ClienteRepos
 import com.umg.desarrolloweb.proyectoCompraloFacil.app.util.PageRender;
 
 
-
 @Secured("ROLE_ADMIN")
 @Controller
 public class ClienteController {
